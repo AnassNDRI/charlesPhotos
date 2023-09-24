@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 declare var $: any;
 
 @Component({
@@ -6,10 +7,9 @@ declare var $: any;
   templateUrl: './rate-service.component.html',
   styleUrls: ['./rate-service.component.css']
 })
-export class RateServiceComponent implements OnInit {
+export class RateServiceComponent implements OnInit  {
 
   ngOnInit() {
     $('#myCarousel').carousel();
   }
-
 }

@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class ContactComponent {
 
+  message : string = "";
+
+  send() {
+     this.message = 'Le formulaire a été envoyé avec succès.';
+     location.reload(); // Cette ligne rafraîchit la page.// code rafraichir la page.
+    }
+
+
 }

@@ -9,6 +9,12 @@ import { RateServiceComponent } from './pages/rate-service/rate-service.componen
 import { ContactComponent } from './pages/contact/contact.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './admin/login/login.component';
+import { AddPictureComponent } from './pages/picture/add-picture/add-picture.component';
+import { DetailPictureComponent } from './pages/picture/detail-picture/detail-picture.component';
+import { EditPictureComponent } from './pages/picture/edit-picture/edit-picture.component';
+import { ListPictureComponent } from './pages/picture/list-picture/list-picture.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +23,12 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     GalleryComponent,
     RateServiceComponent,
     ContactComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent,
+    DetailPictureComponent,
+    EditPictureComponent,
+    AddPictureComponent,
+    ListPictureComponent
   ],
   imports: [
     BrowserModule,
