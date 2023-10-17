@@ -33,6 +33,10 @@
   background-color: #555; /* Couleur au survol */
 }
 
+.footer a:hover {
+  background-color: #555; /* Couleur au survol */
+}
+
 .footer {
   background-color: #867e7e;
   color: white;

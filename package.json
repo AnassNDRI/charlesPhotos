@@ -23,6 +23,7 @@
     "animate.css": "^4.1.1",
     "bootstrap": "^5.0.1",
     "font-awesome": "^4.7.0",
+    "http-client": "^4.3.1",
     "jquery": "^3.7.1",
     "ngx-owl-carousel-o": "^16.0.0",
     "popper.js": "^1.16.1",

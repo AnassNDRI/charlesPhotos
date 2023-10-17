@@ -73,6 +73,20 @@
   margin-bottom: 100px;
 } */
 
-.bordRaduis {
-  border-radius: 80px;
+.disign {
+  box-shadow: 10px;
+  border-radius: 35px;
+  box-shadow: 3px 3px 5px 0 rgba(0, 0, 0);
+}
+
+.cardRad {
+  border-radius: 35px;
+}
+
+.img-hover {
+  transition: filter 0.3s ease;
+}
+
+.img-hover:hover {
+  filter: brightness(0.8);
 }

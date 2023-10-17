@@ -9,7 +9,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
-  {path: 'gallery', component: GalleryComponent},
+  {path: 'pictures', component: GalleryComponent},
   {path: 'rate', component: RateServiceComponent},
   {path: 'contact', component: ContactComponent},
   {path: '**', component: PageNotFoundComponent },
