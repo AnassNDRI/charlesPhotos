@@ -37,7 +37,7 @@ export class PicturesService {
 // }
 getPictureList() : Observable< Picture[]> {
 
-  return this.http.get<Picture[]>('pictures').pipe(
+  return this.http.get<Picture[]>('api/pictures').pipe(
     tap((response) => this.log(response)), // code factorisé
     catchError((error) => this.handleError(error, []))
   );
@@ -45,7 +45,7 @@ getPictureList() : Observable< Picture[]> {
 
 getPictureById(pictureId: number) : Observable<Picture|undefined> {
 
-  return this.http.get<Picture>(`pictures/${pictureId}`).pipe (
+  return this.http.get<Picture>(`api/pictures/${pictureId}`).pipe (
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, undefined))
   );
@@ -57,7 +57,7 @@ updatePicture(picture: Picture): Observable<null> {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  return this.http.put('pictures', picture, httpOptions).pipe(
+  return this.http.put('api/pictures', picture, httpOptions).pipe(
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, null))
   );
@@ -65,7 +65,7 @@ updatePicture(picture: Picture): Observable<null> {
 }
 
 deletePictureById(pictureId: number) : Observable<null> {
-  return this.http.delete<Picture>(`pictures/${pictureId}`).pipe (
+  return this.http.delete<Picture>(`api/pictures/${pictureId}`).pipe (
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, undefined))
   );

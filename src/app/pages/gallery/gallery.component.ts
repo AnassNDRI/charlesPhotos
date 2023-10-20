@@ -32,4 +32,8 @@ export class GalleryComponent implements OnInit {
     this.route.navigate(['picture/add'])
   }
 
+  goToPictureDetail() {
+    this.route.navigate(['picture/:id'])
+  }
+
 }

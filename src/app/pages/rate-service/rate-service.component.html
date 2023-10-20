@@ -25,33 +25,34 @@
   </ul>
   </thead>
 
-
   <div class="container card-container">
     <!-- Première rangée de cartes -->
     <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-6 ">
+      <!-- Première carte -->
+      <div class="col-xs-12 col-sm-6 col-md-6" *ngFor="let rateServ of rateServList">
         <!-- Card -->
-        <div class="card mb-4 disign ">
+        <div class="card mb-4 disign">
           <!--Card image-->
-          <div class="view overlay ">
-            <img class="card-img-top img-hover cardRad" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+          <div class="view overlay" (click)="goToRateServDetail()" pictureBorderCard>
+            <img class="card-img-top img-hover cardRad"  [src]="rateServ.pictureLink"  alt="Card image cap">
             <a href="#!">
               <div class="mask rgba-white-slight"></div>
             </a>
           </div>
           <!--Card content-->
           <div class="card-body">
-
             <!--Title-->
-            <h4 class="card-title">« Juste moi » 130 euros</h4>
+            <h4 class="card-title">{{rateServ.title}}{{rateServ.rate}} euros</h4>
             <!--Text-->
-            <p class="card-text">Séance pour une personne, en extérieur ou en studio</p>
+            <p class="card-text">{{rateServ.description}}</p>
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
             <button type="button" class="btn btn-light-blue btn-md">Read more</button>
           </div>
         </div>
       </div>
-      </div>
+
+
     </div>
+  </div>
 
 
