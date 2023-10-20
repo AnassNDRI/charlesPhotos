@@ -14,7 +14,7 @@ export class HomeComponent {
   ) { }
 
   goToGallery() {
-    this.router.navigate(['/gallery'])
+    this.router.navigate(['/pictures'])
   }
 
 }
