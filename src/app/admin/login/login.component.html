@@ -1,26 +1,22 @@
-
-<h1 class="center"> CONNEXION </h1>
-<div class='row'>
-  <div class="col s12 m4 offset-m4">
-  <div class="card hoverable">
-    <div class="card-content center">
-      <span class="card-title">Page de connexion</span>
-      <p><em>{{message}}</em></p>
-    </div>
-          <!-- <form #loginForm="ngForm"> -->
-        <div>
-                  <label for="name">Name</label>
-          <!-- <input type="text" id="name" [(ngModel)]="name" name="name" required> -->
-        </div>
-        <div>
-          <label for="password">Password</label>
-          <!-- <input type="password" id="password" [(ngModel)]="password" name="password" required> -->
-        </div>
-      <!-- </form> -->
-    <div class="card-action center">
-      <!-- <a (click)="login()" class="waves-effect waves-light btn"  *ngIf="!auth.isLoggedIn">Se connecter</a>
-      <a (click)="logout()" *ngIf="auth.isLoggedIn">Se déconnecter</a> -->
-    </div>
+<div class="wrapper">
+  <div class="logo">
+      <img src="../../../assets/pictures/logo.png" alt="">
   </div>
+  <div class="text-center mt-4 name">
+      Connexion Admin
   </div>
+  <form class="p-3 mt-3">
+      <div class="form-field d-flex align-items-center">
+          <span class="far fa-user"></span>
+          <input type="text" name="userName" id="userName" placeholder="Username">
+      </div>
+      <div class="form-field d-flex align-items-center">
+          <span class="fas fa-key"></span>
+          <input type="password" name="password" id="pwd" placeholder="Password">
+      </div>
+      <button class="btn mt-3" (click)="admin()">Login</button>
+  </form>
+  <div class="text-center fs-6">
+      <a href="#">Retouner</a>
   </div>
+</div>

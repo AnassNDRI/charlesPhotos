@@ -23,7 +23,7 @@ export class GalleryComponent implements OnInit {
 
     this.pictureService.getPictureList().subscribe(pictureList => this.pictureList = pictureList);
   }
-  goToPicture(picture: Picture) {
+  goToPictureDetail(picture: Picture) {
 
     this.route.navigate(['/picture', picture.id])
   }
@@ -32,8 +32,8 @@ export class GalleryComponent implements OnInit {
     this.route.navigate(['picture/add'])
   }
 
-  goToPictureDetail() {
-    this.route.navigate(['picture/:id'])
-  }
+  // goToPictureDetail() {
+  //   this.route.navigate(['picture/:id'])
+  // }
 
 }
