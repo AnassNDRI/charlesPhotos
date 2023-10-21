@@ -1,1 +1,43 @@
-<p>detail-picture works!</p>
+<h1 class="center"> Détail d'un pokémon </h1>
+
+<div *ngIf="picture" class="row">
+  <div class="col s12 m8 offset-m2">
+  <h2 class="header center">{{ picture.name }}</h2>
+  <div class="card horizontal hoverable">
+    <div class="card-image">
+      <img [src]="picture.pictureLink">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <table class="bordered striped">
+          <tbody>
+            <tr>
+              <td>Nom</td>
+              <td><strong>{{ picture.name }}</strong></td>
+            </tr>
+
+            <tr>
+              <td>Types</td>
+              <td>
+                <span *ngFor="let categ of picture.category" >{{ categ }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Date de création</td>
+              <td><em>{{ <picture></picture>.created | date:"dd/MM/yyyy" }}</em></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-action">
+        <a  (click)="goBack()">Retour</a>
+        <a  (click)="goToEditPicture(picture)">Editer</a>
+        <a class="red-text" (click)="deletePicture(picture)"><strong>Supprimer</strong></a>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <h4 *ngIf='!picture' class="center">
+    <!-- <app-loader></app-loader> -->
+  </h4>

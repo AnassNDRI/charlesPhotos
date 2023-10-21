@@ -54,4 +54,10 @@ export class LoginComponent implements OnInit {
    this.message = 'Vous êtes déconnetés';
   }
 
+
+  admin() {
+    //  this.auth.logout();
+    this.router.navigate(['admin'])
+    }
+
 }

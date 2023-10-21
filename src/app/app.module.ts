@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { InMemoryDataService } from './in-memory-data.service';
 import { PicturesModule } from './pages/pictures.module';
 import { HomeComponent } from './pages/home/home.component';
+import { AdministratorComponent } from './admin/administrator/administrator.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HomeComponent } from './pages/home/home.component';
     EditPictureComponent,
     AddPictureComponent,
     ListPictureComponent,
-    PictureFormComponent
+    PictureFormComponent,
+    AdministratorComponent
   ],
   imports: [
     BrowserModule,

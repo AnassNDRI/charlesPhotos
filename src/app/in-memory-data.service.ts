@@ -11,7 +11,7 @@ export class InMemoryDataService implements InMemoryDataService {
   createDb() {
    const pictures = PICTURES;
    const rateServices = RATESERV;
-    return {pictures, rateServices }
+   return {pictures, rateServices }
 
   }
 }
