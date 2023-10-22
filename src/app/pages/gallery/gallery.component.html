@@ -16,10 +16,10 @@
   <ul id="menu-accordeon">
     <li><a>TRIER PAR CATEGORIE</a>
       <ul>
-        <!-- <select [(ngModel)]="categoryIdSelected" class="form-select">
+         <select [(ngModel)]="categoryIdSelected" class="form-select">
           <option [ngValue]="null">TOUTES LES CATEGORIES</option>
-          <option [ngValue]="category.id" *ngFor="let category of categoryList">{{ category.libelle }}</option>
-        </select> -->
+          <option [ngValue]="category.id" *ngFor="let category of categoryList">{{ category.nameCate }}</option>
+        </select>
       </ul>
     </li>
   </ul>
@@ -38,7 +38,7 @@
             <!-- <div class="mask rgba-white-slight">ffsfsfsfsffffffffffffff</div> -->
             <!-- Categorie texte -->
             <div class="category">
-              <h5 class="category-text" *ngFor="let categ of picture.category">{{categ}}</h5>
+              <h5 class="category-text" *ngFor="let categ of picture.category">{{categ.nameCate}}</h5>
               <!-- End texte -->
           </div>
           </a>

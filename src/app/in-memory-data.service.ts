@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PICTURES } from './mockData/mock-pictures-list';
 import { RATESERV } from './mockData/mock-RateService-list';
+import { CATEGORY } from './mockData/mock-category-list';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ export class InMemoryDataService implements InMemoryDataService {
   createDb() {
    const pictures = PICTURES;
    const rateServices = RATESERV;
-   return {pictures, rateServices }
+   const category = CATEGORY;
+   return {pictures, rateServices, category }
 
   }
 }

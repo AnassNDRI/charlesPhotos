@@ -1,4 +1,4 @@
-<div class="header">
+ <div class="header">
   <div class="logo">
     <a href="home"> <img src="../../../assets/pictures/logo.png" alt="Logo"></a>
   </div>
@@ -8,10 +8,14 @@
       <li><a href="pictures">Galerie</a></li>
       <li><a href="rateServices">Tarifs</a></li>
       <li><a href="contact">Contact</a></li>
-       <li><a href="login"> <i class="fas fa-user"></i></a></li>
+       <li><a href="login" > <i class="fas fa-user"></i></a></li>
+       <!-- *ngIf="!auth.isLoggedIn"
+       *ngIf="auth.isLoggedIn" -->
+       <li><a href="login" > <i class="fas fa-sign-out-alt" ></i></a></li>
     </ul>
   </nav>
 </div>
+
 
 <router-outlet></router-outlet>
 
@@ -32,7 +36,5 @@
         <strong>Anass N'DRI</strong><br>
         Développeur Angular Full Stack</p>
     </div>
-
-
 </div>
 </footer>

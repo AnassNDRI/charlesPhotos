@@ -1,88 +1,78 @@
 import { Picture } from "./pictures";
+import { CATEGORY } from "./mock-category-list";
 
 export const PICTURES: Picture[] = [
-  {
-      id: 1,
-      name: "Bulbizarre",
-      pictureLink: "../../../assets/pictures/cam.jpg",
-      category: ["Couple"],
-      created: new Date()
-  },
-  {
-    id: 2,
-      name: "Bulbizarre",
-      pictureLink: "../../../assets/pictures/came.jpg",
-      category: ["Couple"],
-      created: new Date()
-  },
-  {
-    id: 2,
-    name: "Bulbizarre",
-    pictureLink: "../../../assets/pictures/camera.jpg",
-    category: ["Couple"],
-    created: new Date()
-  },
-  {
-    id: 3,
-    name: "Bulbizarre",
-    pictureLink: "../../../assets/pictures/camera-.jpg",
-    category: ["Couple"],
-    created: new Date()
-  },
-  {
-    id: 5,
-    name: "Mariage",
-    pictureLink: "../../../assets/pictures/camera2.jpg",
-    category: ["Couple"],
-    created: new Date()
-  },
-  {
-    id: 6,
-    name: "Bulbizarre",
-    pictureLink: "../../../assets/pictures/camera--.jpg",
-    category: ["Couple"],
-    created: new Date()
-  },
-  {
-    id: 7,
-    name: "Mariage",
-    pictureLink: "../../../assets/pictures/came.jpg",
-    category: ["Mariage"],
-    created: new Date()
-  },
-  {
-    id: 8,
-    name: "Baptème",
-    pictureLink: "../../../assets/pictures/camera2.jpg",
-    category: ["Mariage"],
-    created: new Date()
-  },
-  {
-    id: 9,
-    name: "Bulbizarre",
-    pictureLink: "../../../assets/pictures/cam.jpg",
-    category: ["Couple"],
-    created: new Date()
-  },
-  {
-    id: 10,
-    name: "Bulbizarre",
-    pictureLink: "../../../assets/pictures/came.jpg",
-    category: ["Baptème"],
-    created: new Date()
-  },
-  {
-    id: 11,
-    name: "Bulbizarre",
-    pictureLink: "../../../assets/pictures/camera--.jpg",
-    category: ["Bébé"],
-    created: new Date()
-  },
-  {
-    id: 12,
-    name: "Famille",
-    pictureLink: "../../../assets/pictures/camera-.jpg",
-    category: ["Famille"],
-    created: new Date()
-  }
+  new Picture(
+  //   1,
+    "Bulbizarre",
+    "../../../assets/pictures/cam.jpg",
+    [CATEGORY[0]]
+  ),
+  new Picture(
+  //   2,
+    "Bulbizarre",
+    "../../../assets/pictures/came.jpg",
+    [CATEGORY[1]],
+  ),
+  new Picture(
+  //   3,
+    "Bulbizarre",
+    "../../../assets/pictures/cam.jpg",
+    [CATEGORY[2]]
+  ),
+  new Picture(
+  //   4,
+    "Bulbizarre",
+    "../../../assets/pictures/came.jpg",
+    [CATEGORY[3]],
+  ),
+  new Picture(
+ //    5,
+    "Bulbizarre",
+    "../../../assets/pictures/cam.jpg",
+    [CATEGORY[4]]
+  ),
+  new Picture(
+  //   6,
+    "Bulbizarre",
+    "../../../assets/pictures/came.jpg",
+    [CATEGORY[5]],
+  ),
+  new Picture(
+  //   7,
+    "Bulbizarre",
+    "../../../assets/pictures/cam.jpg",
+    [CATEGORY[0]]
+  ),
+  new Picture(
+   //  8,
+    "Bulbizarre",
+    "../../../assets/pictures/came.jpg",
+    [CATEGORY[1]],
+  ),
+  new Picture(
+  //   9,
+    "Bulbizarre",
+    "../../../assets/pictures/cam.jpg",
+    [CATEGORY[2]]
+  ),
+  new Picture(
+   //  10,
+    "Bulbizarre",
+    "../../../assets/pictures/came.jpg",
+    [CATEGORY[3]],
+  ),
+  new Picture(
+   //  11,
+    "Bulbizarre",
+    "../../../assets/pictures/cam.jpg",
+    [CATEGORY[4]]
+  ),
+  new Picture(
+   // 12,
+    "Bulbizarre",
+    "../../../assets/pictures/came.jpg",
+    [CATEGORY[5]],
+  ),
+
 ];

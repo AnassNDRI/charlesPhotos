@@ -11,11 +11,16 @@ import { EditPictureComponent } from './picture/edit-picture/edit-picture.compon
 import { RateServiceComponent } from './rate-service/rate-service.component';
 import { RateServService } from '../service/rate-serv.service';
 import { BorderCardDirective } from '../mockData/border-card.directive';
+import { PictureFormComponent } from './picture/picture-form/picture-form.component';
+import { LoaderComponent } from './picture/loader/loader.component';
+import { PictureCategoryColorPipe } from '../mockData/picture-category-color.pipe';
+
+
 
 
 const pictureRoutes: Routes = [
   {path: 'edit/picture/:id', component: EditPictureComponent, canActivate: [AuthGuard] },
-  {path: 'picture/add', component: AddPictureComponent, canActivate: [AuthGuard] },
+  {path: 'picture/add', component: AddPictureComponent,  },
   {path: 'picture/:id', component: DetailPictureComponent,  },
   {path: 'pictures', component: GalleryComponent},
   {path: 'rateServices', component: RateServiceComponent},
@@ -27,9 +32,17 @@ const pictureRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    PictureCategoryColorPipe,
     GalleryComponent,
     RateServiceComponent,
+    AddPictureComponent,
     BorderCardDirective,
+    PictureFormComponent,
+    EditPictureComponent,
+    AddPictureComponent,
+    LoaderComponent
+
+
   ],
   imports: [
     CommonModule,

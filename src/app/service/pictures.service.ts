@@ -1,12 +1,15 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Picture } from '../mockData/pictures';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
+import { Category } from '../mockData/category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PicturesService {
+  categoryIdSelected: any;
+  filtre: any;
 
   constructor(private http: HttpClient) { }
 
@@ -22,19 +25,9 @@ export class PicturesService {
 
 }
 
-// // recherche per autoCompletion avec la librairie RXJS
-// searchPictureList(term: string): Observable<Picture[]> {
-//   // cette condition impose une saisi pour la recherche au moins à 2 lettres
-//   // pour ne pas soliciter inutilement le serveur.
-//   if(term.length <= 1) {
-//     return of([]);
-//   }
-//   return this.http.get<Picture[]>(`api/pictures/?name=${term}`).pipe(
-//     tap((response) => this.log(response)),
-//     catchError((error) => this.handleError(error, []))
-//   );
 
-// }
+
+
 getPictureList() : Observable< Picture[]> {
 
   return this.http.get<Picture[]>('api/pictures').pipe(
@@ -85,24 +78,14 @@ private handleError(error: Error, errorValue: any) {
   return of(errorValue);
 }
 
-// getPictureCategoryList() : Observable< Category[]> {
 
-//   return this.http.get<Category[]>('api/category').pipe(
-//     tap((response) => this.log(response)), // code factorisé
-//     catchError((error) => this.handleError(error, []))
-//   );
-// }
 
-getPictureCategoryList(): string[] {
-
-  return [
-    'Couple',
-    'Mariage',
-    'Grossesse',
-    'Bébé',
-    'Famille',
-    'Baptème'
-  ];
+// Liste des PictureLink
+getPictureLinks(): Observable<string[]> {
+  return this.getPictureList().pipe(
+    map(pictures => pictures.map(picture => picture.pictureLink)),
+    catchError((error) => this.handleError(error, []))
+  );
 }
 
 }
