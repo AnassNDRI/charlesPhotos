@@ -7,6 +7,6 @@ export const CATEGORY: Category[] = [
   new Category( 'Grossesse'),
   new Category( 'Bébé'),
   new Category( 'Famille'),
-  new Category( 'Baptème'),
+  new Category( 'Baptême'),
 
 ];

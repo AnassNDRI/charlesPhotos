@@ -2,7 +2,7 @@
 <div class="container">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">Notre Galerie Photos </h1>
+      <h1 class="display-4 text-center">Notre Galerie Photos </h1>
     </div>
   </div>
   </div>
@@ -16,7 +16,7 @@
   <ul id="menu-accordeon">
     <li><a>TRIER PAR CATEGORIE</a>
       <ul>
-         <select [(ngModel)]="categoryIdSelected" class="form-select">
+         <select [(ngModel)]="categoryIdSelected" (change)="onCategoryChange()" class="form-select">
           <option [ngValue]="null">TOUTES LES CATEGORIES</option>
           <option [ngValue]="category.id" *ngFor="let category of categoryList">{{ category.nameCate }}</option>
         </select>
@@ -25,15 +25,16 @@
   </ul>
   </thead>
 
+
 <div class="container card-container">
   <!-- Première rangée de cartes -->
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6" *ngFor="let picture of pictureList">
+    <div class="col-xs-12 col-sm-6 col-md-6" *ngFor="let picture of filteredPictures">
       <!-- Card -->
       <div class="card mb-4 disign">
         <!--Card image -->
         <div class="view overlay" (click)="goToPictureDetail(picture)" pictureBorderCard >
-          <img class="card-img-top img-hover cardRad" [src]="picture.pictureLink"  alt="Card image cap">
+          <img class="card-img-top img-hover cardRad" [src]="picture.pictureLink" [alt]="picture.name" alt="Card image cap">
           <a href="">
             <!-- <div class="mask rgba-white-slight">ffsfsfsfsffffffffffffff</div> -->
             <!-- Categorie texte -->

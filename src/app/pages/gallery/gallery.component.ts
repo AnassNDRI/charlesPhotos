@@ -18,6 +18,7 @@ export class GalleryComponent implements OnInit {
   categoryList: Category [] = [];
   categoryIdSelected: number | null = null;
   filtre = '';
+  filteredPictures: Picture[] = [];
 
   constructor (
     private route: Router,
@@ -27,8 +28,14 @@ export class GalleryComponent implements OnInit {
 
   ngOnInit()  {
 
-    this.pictureService.getPictureList().subscribe(pictureList => this.pictureList = pictureList);
+   // this.pictureService.getPictureList().subscribe(pictureList => this.pictureList = pictureList);
     this.categoryService.getCategoryList().subscribe(categoryList => this.categoryList = categoryList);
+
+    this.pictureService.getPictureList().subscribe(pictures => {
+      this.pictureList = pictures;
+      this.filteredPictures = this.filtrerPictures(this.pictureList);
+    });
+
   }
   goToPictureDetail(picture: Picture) {
 
@@ -39,32 +46,18 @@ export class GalleryComponent implements OnInit {
     this.route.navigate(['picture/add'])
   }
 
-  // goToPictureDetail() {
-  //   this.route.navigate(['picture/:id'])
-  // }
- // filtrer la gallerie
+  filtrerPictures(pictures: Picture[]): Picture[] {
+    if (this.categoryIdSelected == null) {
+      return pictures;
+    } else {
+      return pictures.filter(picture => {
+        return picture.category.some(category => category.id === this.categoryIdSelected);
+      });
+    }
+  }
 
-
-  // filtrerPictures(pictures: Picture[]){
-  //   return pictures.filter ( photo => {
-  //     return (photo.categorieId === this.categoryIdSelected || this.categoryIdSelected === null) &&
-  //       photo.name.toUpperCase().includes( this.filtre.trim().toUpperCase())});
-  // }
-
-  // filtrerProducts(pictures: Picture[]){
-
-  //   return pictures.filter ( art => {
-
-  //     return (art.category === this.categoryIdSelected || this.categoryIdSelected === null) &&
-  //       art.category.toUpperCase().includes( this.filtre.trim().toUpperCase())});
-  // }
-
-  // filtrerPictures(pictures: Picture[]) {
-  //   return pictures.filter(photo => {
-  //     const categoryMatch = this.categoryIdSelected === null || photo.category.some(cat => cat.id === this.categoryIdSelected);
-  //     const filterMatch = this.filtre.trim() === "" || photo.category.some(cat => cat.nameCate.toUpperCase().includes(this.filtre.trim().toUpperCase()));
-  //     return categoryMatch && filterMatch;
-  //   });
-  // }
+  onCategoryChange() {
+    this.filteredPictures = this.filtrerPictures(this.pictureList);
+  }
 
 }

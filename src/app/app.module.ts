@@ -11,7 +11,6 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'; // d
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './admin/login/login.component';
 import { DetailPictureComponent } from './pages/picture/detail-picture/detail-picture.component';
-import { EditPictureComponent } from './pages/picture/edit-picture/edit-picture.component';
 import { FormsModule } from '@angular/forms';
 import { InMemoryDataService } from './in-memory-data.service';
 import { PicturesModule } from './pages/pictures.module';

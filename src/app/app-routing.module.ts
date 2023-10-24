@@ -5,6 +5,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './admin/login/login.component';
 import { AdministratorComponent } from './admin/administrator/administrator.component';
+import { AuthGuard } from './security/services/auth.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
