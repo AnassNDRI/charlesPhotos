@@ -1,17 +1,22 @@
-<div class="header">
+
+
+
+ <div class="header"  *ngIf="headerVisible">
   <div class="logo">
     <a href="home"> <img src="../../../assets/pictures/logo.png" alt="Logo"></a>
   </div>
   <nav class="menu">
     <ul>
-      <li><a href="home">Accueil</a></li>
-      <li><a href="pictures">Galerie</a></li>
-      <li><a href="rateServices">Tarifs</a></li>
-      <li><a href="contact">Contact</a></li>
-       <li><a href="login"> <i class="fas fa-user"></i></a></li>
+      <li><a routerLink="/home">Accueil</a></li>
+      <li><a routerLink="/pictures">Galerie</a></li>
+      <li><a routerLink="/rateServices">Tarifs</a></li>
+      <li><a routerLink="/contact">Contact</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fas fa-user"></i></a></li>
+      <li *ngIf="isLoggedIn"><a (click)="logout()"><i class="fas fa-sign-out-alt"></i></a></li>
     </ul>
   </nav>
 </div>
+
 
 <router-outlet></router-outlet>
 
@@ -32,7 +37,5 @@
         <strong>Anass N'DRI</strong><br>
         Développeur Angular Full Stack</p>
     </div>
-
-
 </div>
 </footer>

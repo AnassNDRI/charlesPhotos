@@ -1,63 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/auth.service';
+import { AuthService } from 'src/app/security/services/auth.service';
+import { AuthenticationService } from 'src/app/security/services/authentication.service';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent  {
+  message = 'Vous etes déconnectés (Charles/photo)';
+  email = '';
+  password = '';
 
-  message: string = 'Vous etes déconnectés (pikachu/pikachu)';
-  // name: string;
-  // password: string;
-  // auth : AuthService;
+  constructor(private authService: AuthenticationService, private router: Router) {}
 
-  constructor(
-    private authService: AuthService,
-     private router: Router
-  ) {}
+  ngOnInit() {}
 
-  ngOnInit() {
-   // this.auth = this.authService;
+  setMessage(isLoggedIn: boolean) {
+    this.message = isLoggedIn ? 'Vous etes connectés' : 'Identifiant ou mot de passe incorrect.';
   }
 
-  setMessage() {
-    // if(this.auth.isLoggedIn) {
-    //   this.message = 'Vous etes connectés';
-
-    // } else {
-    //   this.message = 'Identifiant ou mot de passe incorrect.';
-    // }
-
-  }
-
-  login() {
-    // this.message = 'Tentative de connexion en cours...';
-    // this.auth.login(this.name, this.password)
-    // .subscribe((isLoggedIn: boolean) => {
-    //   this.setMessage();
-
-    //   if(isLoggedIn) {
-    //     this.router.navigate(['/pokemons']);
-    //   } else {
-    //     this.password = '';
-    //     this.router.navigate(['/login']);
-    //   }
-    // })
-
+  Adminlogin() {
+    this.message = 'Tentative de connexion en cours...';
+    this.authService.login(this.email, this.password).subscribe((isLoggedIn: boolean) => {
+      this.setMessage(isLoggedIn);
+      if (isLoggedIn) {
+        this.router.navigate(['/admin']);
+      } else {
+        this.password = '';
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
   logout() {
-  //  this.auth.logout();
-   this.message = 'Vous êtes déconnetés';
+    this.authService.logout();
+    this.message = 'Vous êtes déconnetés';
   }
 
-
-  admin() {
-    //  this.auth.logout();
-    this.router.navigate(['admin'])
-    }
+  goBack() {
+    this.router.navigate(['/pictures']);
+  }
 
 }

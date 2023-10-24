@@ -10,11 +10,7 @@ import { HttpClientModule} from '@angular/common/http'
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api'; // depuis la librairie installée
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './admin/login/login.component';
-import { AddPictureComponent } from './pages/picture/add-picture/add-picture.component';
 import { DetailPictureComponent } from './pages/picture/detail-picture/detail-picture.component';
-import { EditPictureComponent } from './pages/picture/edit-picture/edit-picture.component';
-import { ListPictureComponent } from './pages/picture/list-picture/list-picture.component';
-import { PictureFormComponent } from './pages/picture/picture-form/picture-form.component';
 import { FormsModule } from '@angular/forms';
 import { InMemoryDataService } from './in-memory-data.service';
 import { PicturesModule } from './pages/pictures.module';
@@ -30,11 +26,8 @@ import { AdministratorComponent } from './admin/administrator/administrator.comp
     PageNotFoundComponent,
     LoginComponent,
     DetailPictureComponent,
-    EditPictureComponent,
-    AddPictureComponent,
-    ListPictureComponent,
-    PictureFormComponent,
-    AdministratorComponent
+    AdministratorComponent,
+
   ],
   imports: [
     BrowserModule,
