@@ -13,9 +13,10 @@ import { Subscription } from 'rxjs';
 export class AppComponent implements OnInit, OnDestroy {
 
   title = 'charlesPhotos';
-  headerVisible = true;
+  menuActive: boolean = false;
+  headerVisible: boolean  = true;
   headerVisibleSubscription: Subscription;
-  isLoggedIn = false; //  pour savoir si un utilisateur est connecté ou non
+  isLoggedIn: boolean  = false; //  pour savoir si un utilisateur est connecté ou non
   private userSubscription: Subscription;
 
 
@@ -52,6 +53,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
 
+  toggleMenu() {
+    this.menuActive = !this.menuActive;
+  }
+
   ngOnDestroy() {
     this.headerVisibleSubscription.unsubscribe(); // Désabonnement pour éviter les fuites de mémoire
     if (this.userSubscription) {
@@ -63,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigate(['/home']);
-    // Vous pouvez ajouter plus de logique ici si nécessaire
+
   }
   }
 

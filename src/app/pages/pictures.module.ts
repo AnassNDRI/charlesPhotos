@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { GalleryComponent } from './gallery/gallery.component';
 import { FormsModule } from '@angular/forms';
 import { PicturesService } from '../service/pictures.service';
 import { AuthGuard } from '../security/services/auth.guard';
@@ -14,15 +13,17 @@ import { BorderCardDirective } from '../mockData/border-card.directive';
 import { PictureFormComponent } from './picture/picture-form/picture-form.component';
 import { LoaderComponent } from './picture/loader/loader.component';
 import { PictureCategoryColorPipe } from '../mockData/picture-category-color.pipe';
+import { ServiceRateDetailComponent } from './serviceRate/service-rate-detail/service-rate-detail.component';
+import { ServiceRateFormComponent } from './serviceRate/service-rate-form/service-rate-form.component';
+import { ServiceRateEditComponent } from './serviceRate/service-rate-edit/service-rate-edit.component';
 
 
 
 
 const pictureRoutes: Routes = [
-  {path: 'edit/picture/:id', component: EditPictureComponent, },
-  {path: 'picture/add', component: AddPictureComponent, canActivate: [AuthGuard] },
+  {path: 'edit/picture/:id', component: EditPictureComponent, canActivate: [AuthGuard]},
+  {path: 'picture/add', component: AddPictureComponent, canActivate: [AuthGuard]},
   {path: 'picture/:id', component: DetailPictureComponent,  },
-  {path: 'pictures', component: GalleryComponent},
   {path: 'rateServices', component: RateServiceComponent},
 
 
@@ -33,14 +34,17 @@ const pictureRoutes: Routes = [
 @NgModule({
   declarations: [
     PictureCategoryColorPipe,
-    GalleryComponent,
     RateServiceComponent,
     AddPictureComponent,
     BorderCardDirective,
     PictureFormComponent,
     EditPictureComponent,
+    DetailPictureComponent,
     AddPictureComponent,
-    LoaderComponent
+    LoaderComponent,
+    ServiceRateDetailComponent,
+    ServiceRateFormComponent,
+    ServiceRateEditComponent
 
 
   ],

@@ -4,6 +4,7 @@ import { Picture } from 'src/app/mockData/pictures';
 import { PicturesService } from 'src/app/service/pictures.service';
 import { Category } from '../../mockData/category';
 import { CategoryService } from 'src/app/service/category.service';
+import { AuthenticationService } from 'src/app/security/services/authentication.service';
 
 @Component({
   selector: 'app-gallery',
@@ -19,11 +20,13 @@ export class GalleryComponent implements OnInit {
   categoryIdSelected: number | null = null;
   filtre = '';
   filteredPictures: Picture[] = [];
+  isLoggedIn: boolean = false;
 
   constructor (
     private route: Router,
     private pictureService: PicturesService,
-    private categoryService : CategoryService
+    private categoryService : CategoryService,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit()  {
@@ -36,13 +39,16 @@ export class GalleryComponent implements OnInit {
       this.filteredPictures = this.filtrerPictures(this.pictureList);
     });
 
+    // Initialisez l'état de connexion
+    this.isLoggedIn = this.authService.isLoggedIn();
+
   }
   goToPictureDetail(picture: Picture) {
 
     this.route.navigate(['/picture', picture.id])
   }
 
-  goToEditePicture() {
+  askAdd() {
     this.route.navigate(['picture/add'])
   }
 
@@ -58,6 +64,31 @@ export class GalleryComponent implements OnInit {
 
   onCategoryChange() {
     this.filteredPictures = this.filtrerPictures(this.pictureList);
+  }
+
+
+
+
+  deletePicture(picture: Picture) {
+    let categoryNames = picture.category.map(categ => categ.nameCate).join(', ');
+    let confirmation = confirm(`Voulez-vous vraiment supprimer cette photo de la catégorie ${categoryNames} ?`);
+    if (confirmation) {
+      this.pictureService.deletePictureById(picture.id).subscribe(() => {
+        // Retire la photo de la liste filteredPictures
+        this.filteredPictures = this.filteredPictures.filter(p => p.id !== picture.id);
+        // Rafraichissement de la liste
+        this.pictureList = this.pictureList.filter(p => p.id !== picture.id);
+      });
+    }
+  }
+
+
+  goToEditPicture(picture: Picture) {
+    this.route.navigate(['/edit/picture', picture.id]);
+  }
+
+  goBack() {
+    this.route.navigate(['/pictures'])
   }
 
 }

@@ -2,15 +2,17 @@
 <div class="container">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4 text-center">Notre Galerie Photos </h1>
+      <h1 class="display-4 text-center" *ngIf="!isLoggedIn">Notre Galerie Photos </h1>
+      <h1 class="  text-center " *ngIf="isLoggedIn">Gérez et embellissez <br>
+        votre galerie photo avec aisance et créativité.</h1>
     </div>
   </div>
+  <div class="articles-boutons" style="padding: 8px;">
+    <button type="button" class="btn btn-primary" (click)="askAdd()" *ngIf="isLoggedIn" ><i class="fas fa-plus-circle"></i>&nbsp;Ajouter un produit</button>
+   </div>
   </div>
 
-  <div class="articles-boutons">
-    <!-- <button type="button" class="btn btn-primary" (click)="askAdd()" *ngIf="editionMode" ><i class="fas fa-plus-circle"></i>&nbsp;Ajouter un produit</button>
-    <button type="button" class="btn btn-outline-secondary" (click)="askBack()" *ngIf="editionMode"><i class="fas fa-chevron-left"></i>&nbsp;Retour</button> -->
-  </div>
+
 
   <thead>
   <ul id="menu-accordeon">
@@ -44,5 +46,10 @@
           </div>
           </a>
         </div>
+        <div class="d-flex justify-content-between">
+          <a class="ad-btn" (click)="goToEditPicture(picture)" *ngIf="isLoggedIn">Modifier</a>
+          <a class="delete-btn" (click)="deletePicture(picture)" *ngIf="isLoggedIn">Supprimer</a>
+        </div>
       </div>
+
     </div>

@@ -5,7 +5,7 @@
           <img *ngIf="picture?.pictureLink" [src]="picture.pictureLink" class="card-img">
         </div>
           <div class="card-body">
-              <h2 class="title">Ajouter une photo dans votre Galerie</h2>
+              <h2 class="title">Ajouter ou Modifier une photo dans votre Galerie</h2>
 
               <form *ngIf="picture" (ngSubmit)="onSubmit()" #pictureForm="ngForm">
                   <!-- Picture name -->
