@@ -104,3 +104,12 @@
   border-radius: 35px;
   box-shadow: 3px 3px 5px 0 rgba(0, 0, 0);
 }
+
+
+.text-red {
+  color: rgb(133, 5, 5);
+}
+
+.text-red:hover {
+  color: darkred;
+}

@@ -31,10 +31,10 @@
 <div class="container card-container">
   <!-- Première rangée de cartes -->
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6" *ngFor="let picture of filteredPictures">
+    <div class="col-xs-12 col-sm-6 col-md-6" *ngFor="let picture of filteredPictures" >
       <!-- Card -->
       <div class="card mb-4 disign">
-        <!--Card image -->
+        <!--Card image  pictureBorderCard -->
         <div class="view overlay" (click)="goToPictureDetail(picture)" pictureBorderCard >
           <img class="card-img-top img-hover cardRad" [src]="picture.pictureLink" [alt]="picture.name" alt="Card image cap">
           <a href="">

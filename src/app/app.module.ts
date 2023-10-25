@@ -16,17 +16,22 @@ import { AdministratorComponent } from './admin/administrator/administrator.comp
 import { PictureManageComponent } from './admin/picture-manage/picture-manage.component';
 import { ServeRateManageComponent } from './admin/serve-rate-manage/serve-rate-manage.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { ServiceRateModule } from './pages/serviceRate/service-rate.module';
+import { RateServiceComponent } from './pages/rate-service/rate-service.component';
+import { BorderCardDirective } from './mockData/border-card.directive';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    BorderCardDirective,
     HomeComponent,
     ContactComponent,
     PageNotFoundComponent,
     LoginComponent,
     AdministratorComponent,
     GalleryComponent,
+    RateServiceComponent,
     PictureManageComponent,
     ServeRateManageComponent,
 
@@ -37,6 +42,7 @@ import { GalleryComponent } from './pages/gallery/gallery.component';
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     PicturesModule, // avant l'appRoutingModule parce qu'elle comporte des routes  // specifique.
+    ServiceRateModule, //
     AppRoutingModule,
     NgbModule
   ],

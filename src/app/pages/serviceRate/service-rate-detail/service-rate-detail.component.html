@@ -1,1 +1,33 @@
-<p>service-rate-detail works!</p>
+
+<div class="container">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4 text-center">Plus de Detail </h1>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row" id="ads" *ngIf="rate">
+    <!-- Category Card -->
+    <div class="col-md-4 carte-centree">
+      <div class="card rounded">
+        <div class="card-image">
+          <!-- <span class="card-notify-badge" *ngFor="let categ of picture.category">{{categ.nameCate}}</span> -->
+          <img class="img-fluid" [src]="rate.pictureLink" />
+        </div>
+        <div class="card-body text-center">
+          <div class="ad-title m-auto">
+            <p>{{rate.description}}</p>
+          </div>
+          <div class="d-flex justify-content-between">
+            <a class="ad-btn" (click)="goToEditRate(rate)" *ngIf="isLoggedIn">Modifier</a>
+            <a class="back-btn" (click)="goBack()">Retour</a>
+            <a class="delete-btn" (click)="deleteRate(rate)" *ngIf="isLoggedIn">Supprimer</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

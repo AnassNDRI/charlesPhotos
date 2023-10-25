@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, of, tap } from 'rxjs';
-import { RateServ } from '../mockData/rate-serv';
+import { Rate } from '../mockData/rate';
 
 @Injectable({
   providedIn: 'root'
@@ -10,35 +10,42 @@ export class RateServService {
 
   constructor(private http: HttpClient) { }
 
-  addRatServ(rateService: RateServService): Observable<RateServ> {
+  addRatServ(rateService: RateServService): Observable<Rate> {
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
-  return this.http.post<RateServ>('api/rateServices', rateService, httpOptions).pipe(
+  return this.http.post<Rate>('api/rateServices', rateService, httpOptions).pipe(
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, null))
   );
 
 }
 
-getRateServList()  : Observable< RateServ[]> {
+getRateServList()  : Observable< Rate[]> {
 
-  return this.http.get<RateServ[]>('api/rateServices').pipe(
+  return this.http.get<Rate[]>('api/rateServices').pipe(
     tap((response) => this.log(response)), // code factorisé
     catchError((error) => this.handleError(error, []))
   );
 }
 
-getRateServById(rateServId: number) : Observable<RateServ|undefined> {
+getRateById(rateServId: number) : Observable<Rate|undefined> {
 
-  return this.http.get<RateServ>(`api/rateServices/${rateServId}`).pipe (
+  return this.http.get<Rate>(`api/rateServices/${rateServId}`).pipe (
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, undefined))
   );
 
 }
 
-updateRateServ(rateService: RateServ): Observable<null> {
+
+
+
+
+
+
+
+updateRate(rateService: Rate): Observable<null> {
   const httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -50,8 +57,8 @@ updateRateServ(rateService: RateServ): Observable<null> {
 
 }
 
-deletePictureById(rateServId: number) : Observable<null> {
-  return this.http.delete<RateServ>(`api/rateServices/${rateServId}`).pipe (
+deleteRateById(rateServId: number) : Observable<null> {
+  return this.http.delete<Rate>(`api/rateServices/${rateServId}`).pipe (
     tap((response) => this.log(response)),
     catchError((error) => this.handleError(error, undefined))
   );

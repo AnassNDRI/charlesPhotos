@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from 'src/app/mockData/category';
 import { Picture } from 'src/app/mockData/pictures';
 import { AuthenticationService } from 'src/app/security/services/authentication.service';
-import { CategoryService } from 'src/app/service/category.service';
+
 import { PicturesService } from 'src/app/service/pictures.service';
 
 @Component({

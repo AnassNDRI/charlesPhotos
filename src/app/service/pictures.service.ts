@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Picture } from '../mockData/pictures';
 import { Observable, catchError, map, of, tap } from 'rxjs';
-import { Category } from '../mockData/category';
 
 @Injectable({
   providedIn: 'root'
@@ -35,6 +34,7 @@ getPictureList() : Observable< Picture[]> {
     catchError((error) => this.handleError(error, []))
   );
 }
+
 
 getPictureById(pictureId: number) : Observable<Picture|undefined> {
 

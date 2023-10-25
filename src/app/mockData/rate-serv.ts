@@ -1,6 +1,9 @@
+
+import { IdGenerator } from "./id-generator.service";
+
 export class RateServ {
 
-  id: number;
+  readonly id: number;
   title: string;
   description: string;
   rate: number;
@@ -9,11 +12,11 @@ export class RateServ {
   constructor(
     title: string = 'Entrer un Titre...',
     rate: number = 0.0,
-    description: string = 'Entrer un Titre...',
+    description: string = 'Entrer une description...',
     pictureLink: string = "../../../assets/pictures/XXXXXXX.jpg",
 
   ) {
-
+    this.id = IdGenerator.generateId();
     this.title = title;
     this.rate = rate;
     this.description = description;
@@ -21,3 +24,4 @@ export class RateServ {
   }
 
 }
+

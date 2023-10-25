@@ -9,11 +9,13 @@ import { AuthGuard } from './security/services/auth.guard';
 import { PictureManageComponent } from './admin/picture-manage/picture-manage.component';
 import { ServeRateManageComponent } from './admin/serve-rate-manage/serve-rate-manage.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
+import { RateServiceComponent } from './pages/rate-service/rate-service.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   {path: 'pictures', component: GalleryComponent},
+  {path: 'rateServices', component: RateServiceComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdministratorComponent, canActivate: [AuthGuard]},

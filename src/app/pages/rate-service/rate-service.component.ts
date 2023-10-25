@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RateServ } from 'src/app/mockData/rate-serv';
+import { Rate } from 'src/app/mockData/rate';
 import { AuthenticationService } from 'src/app/security/services/authentication.service';
 import { RateServService } from 'src/app/service/rate-serv.service';
 
@@ -13,8 +13,9 @@ declare var $: any;
 })
 export class RateServiceComponent implements OnInit  {
 
-  rateServList: RateServ[] = [];
+  rateServList: Rate[] = [];
   isLoggedIn: boolean = false;
+  filteredRateServices: Rate[] = [];
 
   constructor (
     private route: Router,
@@ -29,23 +30,40 @@ export class RateServiceComponent implements OnInit  {
         // Initialisez l'état de connexion
         this.isLoggedIn = this.authService.isLoggedIn();
   }
-  goToRateServ(rateServ: RateServ) {
+  goToRateServ(rateServ: Rate) {
 
-    this.route.navigate(['/rateServices', rateServ.id])
+    this.route.navigate(['/rateService', rateServ.id])
   }
 
   askAdd() {
-    this.route.navigate(['rateServices/add'])
+    this.route.navigate(['rateService/add'])
   }
 
   goToRateServDetail() {
-    this.route.navigate(['rateServices/:id'])
+    this.route.navigate(['rateService/:id'])
   }
 
   goBack() {
     this.route.navigate(['/pictures'])
   }
 
+  goToEditRateService(rateServ: Rate) {
+    this.route.navigate(['/edit/rateService', rateServ.id]);
+  }
+
+
+  deleteRateService(rateServ: Rate) {
+
+    let confirmation = confirm(`Voulez-vous vraiment supprimer cette photo de la catégorie ${rateServ.title} ?`);
+    if (confirmation) {
+      this.rateServService.deleteRateById(rateServ.id).subscribe(() => {
+        // Retire la photo de la liste filteredRateServices
+        this.filteredRateServices = this.filteredRateServices.filter(rs => rs.id !== rateServ.id);
+        // Rafraichissement de la liste
+        this.rateServList = this.rateServList.filter(rs => rs.id !== rateServ.id);
+      });
+    }
+  }
 
 
 
