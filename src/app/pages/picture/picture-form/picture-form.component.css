@@ -464,3 +464,83 @@
       padding-bottom: 40px;
     }
   }
+
+
+  .back-btn {
+    text-transform: uppercase;
+    width: 100px;
+    height: 30px;
+    border-radius: 80px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 3px solid grey;
+    text-decoration: none;
+    margin: 20px auto;
+    color: #000;
+    overflow: hidden;
+    background-color: grey;
+    transition: all 0.3s ease; /* Ajoutez la transition ici pour une animation fluide */
+  }
+
+  .back-btn:hover {
+    color: #1e1717;
+    border: 2px solid grey;
+    background: transparent;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+  }
+
+
+  .updat-btn {
+    text-transform: uppercase;
+    width: 150px;
+    height: 30px;
+    border-radius: 80px;
+    font-size: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 3px solid #4dae3c;
+    text-decoration: none;
+    margin: 20px auto;
+    color: #ffffff;
+    overflow: hidden;
+    background-color: #4dae3c;
+    transition: all 0.3s ease;
+  }
+
+  .updat-btn:hover {
+    color: #1e1717;
+    border: 2px solid #4dae3c;
+    background: transparent;
+    box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+  }
+
+
+.stylPara {
+ font-weight: bold;
+}
+
+.ligne {
+  display: flex;
+  align-items: center;
+}
+
+.stylParam {
+  margin-right: 10px;
+}
+
+
+.input--style-1 {
+  width: 100%; /* Ajustez selon votre besoin */
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+span {
+  margin-right: 10px; /* Ajustez la valeur comme vous le souhaitez */
+}

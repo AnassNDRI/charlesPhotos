@@ -42,8 +42,7 @@ export class ServiceRateDetailComponent implements OnInit {
   }
 
   deleteRate(rate: Rate) {
-    let categoryNames = rate.category.map(categ => categ.nameCate).join(', ');
-    let confirmation = confirm(`Voulez-vous vraiment supprimer cette photo de la catégorie ${categoryNames} ?`);
+    let confirmation = confirm(`Voulez-vous vraiment supprimer la photo ${rate.title} ?`);
     if (confirmation) {
       this.rateServService.deleteRateById(rate.id)
         .subscribe(() => this.goBack());

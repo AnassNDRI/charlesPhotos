@@ -5,7 +5,7 @@ import { Picture } from 'src/app/mockData/pictures';
 import { PicturesService } from 'src/app/service/pictures.service';
 import { CategoryService } from '../../../service/category.service';
 import { Category } from 'src/app/mockData/category';
-import { map } from 'rxjs/internal/operators/map';
+
 
 
 @Component({
@@ -15,11 +15,10 @@ import { map } from 'rxjs/internal/operators/map';
 })
 export class PictureFormComponent implements OnInit {
 
-  @Input() picture: Picture;
+  @Input() picture : Picture = new Picture()
 
- // picture: Picture = new Picture();
   pictureLinks$: Observable<string[]>;
-  category$: Observable<string[]>;
+  category$: Observable<Category[]>;
   IsAddForm: boolean = true;
 
   constructor(
@@ -30,7 +29,7 @@ export class PictureFormComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const pictureId = +this.route.snapshot.params['id']; // Le + sert à convertir la chaîne en nombre
+    const pictureId = +this.route.snapshot.params['id'];
     if (pictureId) {
       this.IsAddForm = false;
       this.pictureService.getPictureById(pictureId).subscribe({
@@ -38,20 +37,16 @@ export class PictureFormComponent implements OnInit {
           if (picture) {
             this.picture = picture;
           } else {
-            // Gérer le cas où la photo avec l'id donné n'est pas trouvée
             console.error(`Aucune photo trouvée avec l'id ${pictureId}`);
           }
         },
         error: (err) => {
-          // Gérer les erreurs ici si nécessaire
           console.error(err);
         },
       });
     }
     this.pictureLinks$ = this.pictureService.getPictureLinks();
-    this.category$ = this.categoryService.getCategoryList().pipe(
-      map((categories: Category[]) => categories.map(category => category.nameCate))
-    );
+    this.category$ = this.categoryService.getCategoryList();
   }
 
   onSubmit() {
@@ -67,5 +62,12 @@ export class PictureFormComponent implements OnInit {
       });
     }
   }
+
+
+
+  goBack() {
+    this.router.navigate(['/pictures'])
+  }
+
 
 }

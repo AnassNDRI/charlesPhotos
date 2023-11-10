@@ -41,11 +41,13 @@ export class DetailPictureComponent implements OnInit{
   }
 
   deletePicture(picture: Picture) {
-    let categoryNames = picture.category.map(categ => categ.nameCate).join(', ');
-    let confirmation = confirm(`Voulez-vous vraiment supprimer cette photo de la catégorie ${categoryNames} ?`);
-    if (confirmation) {
-      this.pictureService.deletePictureById(picture.id)
-        .subscribe(() => this.goBack());
+    if (this.picture && this.picture.category) {
+      let categoryName = this.picture.category.nameCate;
+      let confirmation = confirm(`Voulez-vous vraiment supprimer cette photo de la catégorie ${categoryName} ?`);
+      if (confirmation) {
+        this.pictureService.deletePictureById(this.picture.id)
+          .subscribe(() => this.goBack());
+      }
     }
   }
 

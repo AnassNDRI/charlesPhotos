@@ -56,11 +56,10 @@ export class GalleryComponent implements OnInit {
     if (this.categoryIdSelected == null) {
       return pictures;
     } else {
-      return pictures.filter(picture => {
-        return picture.category.some(category => category.id === this.categoryIdSelected);
-      });
+      return pictures.filter(picture => picture.category.id === this.categoryIdSelected);
     }
   }
+
 
   onCategoryChange() {
     this.filteredPictures = this.filtrerPictures(this.pictureList);
@@ -70,8 +69,8 @@ export class GalleryComponent implements OnInit {
 
 
   deletePicture(picture: Picture) {
-    let categoryNames = picture.category.map(categ => categ.nameCate).join(', ');
-    let confirmation = confirm(`Voulez-vous vraiment supprimer cette photo de la catégorie ${categoryNames} ?`);
+    let categoryName = picture.category.nameCate;
+    let confirmation = confirm(`Voulez-vous vraiment supprimer cette photo de la catégorie ${categoryName} ?`);
     if (confirmation) {
       this.pictureService.deletePictureById(picture.id).subscribe(() => {
         // Retire la photo de la liste filteredPictures

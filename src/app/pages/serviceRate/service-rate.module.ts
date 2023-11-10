@@ -14,6 +14,7 @@ const rateServRoutes: Routes = [
   {path: 'edit/rateService/:id', component: ServiceRateEditComponent, canActivate: [AuthGuard]},
   {path: 'rateService/add', component: ServiceRateAddComponent, canActivate: [AuthGuard]},
   {path: 'rateService/:id', component: ServiceRateDetailComponent,  },
+  { path: 'rateService/:id', component: ServiceRateDetailComponent },
 
 
 ];

@@ -7,8 +7,7 @@ import { Observable, catchError, map, of, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class PicturesService {
-  categoryIdSelected: any;
-  filtre: any;
+  private picturesUrl = 'api/pictures'; // URL de l'API
 
   constructor(private http: HttpClient) { }
 

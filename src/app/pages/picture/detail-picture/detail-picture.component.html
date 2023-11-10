@@ -13,7 +13,7 @@
       <div class="col-md-4 carte-centree">
         <div class="card rounded">
           <div class="card-image">
-            <span class="card-notify-badge" *ngFor="let categ of picture.category">{{categ.nameCate}}</span>
+            <span class="card-notify-badge" >{{picture.category.nameCate}}</span>
             <img class="img-fluid" [src]="picture.pictureLink" />
           </div>
           <div class="card-body text-center">

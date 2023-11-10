@@ -15,7 +15,6 @@ export class Rate {
     rate: number = 0.0,
     description: string = 'Entrer une description...',
     pictureLink: string = "../../../assets/pictures/XXXXXXX.jpg",
-    category: Category[] = [new Category('Couple')],
 
   ) {
 
@@ -24,7 +23,6 @@ export class Rate {
     this.rate = rate;
     this.description = description;
     this.pictureLink = pictureLink;
-    this.category = category;
   }
 
 }

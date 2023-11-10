@@ -40,8 +40,8 @@
           <a href="">
             <!-- <div class="mask rgba-white-slight">ffsfsfsfsffffffffffffff</div> -->
             <!-- Categorie texte -->
-            <div class="category">
-              <h5 class="category-text" *ngFor="let categ of picture.category">{{categ.nameCate}}</h5>
+            <div class="category" [class.connected]="isLoggedIn">
+              <h5 class="category-text" >{{picture.category.nameCate}}</h5>
               <!-- End texte -->
           </div>
           </a>

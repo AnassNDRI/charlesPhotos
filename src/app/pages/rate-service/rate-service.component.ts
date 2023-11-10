@@ -39,8 +39,10 @@ export class RateServiceComponent implements OnInit  {
     this.route.navigate(['rateService/add'])
   }
 
-  goToRateServDetail() {
-    this.route.navigate(['rateService/:id'])
+
+  goToDetailRate(rate: Rate) {
+
+    this.route.navigate(['/rateService', rate.id])
   }
 
   goBack() {
