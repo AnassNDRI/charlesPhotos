@@ -30,12 +30,10 @@
           <!--Card content-->
           <div class="card-body">
             <!--Title-->
-            <h4 class="card-title">{{rateServ.title}}{{rateServ.rate}} euros</h4>
+            <h4 class="card-title">« {{rateServ.title}} » {{rateServ.rate}} euros</h4>
             <!--Text-->
             <p class="card-text">{{rateServ.description}}</p>
             <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-            <button type="button" class="btn btn-light-blue btn-md">Read more</button>
-
             <div class="d-flex justify-content-between">
               <a class="ad-btn"  *ngIf="isLoggedIn" (click)="goToEditRateService(rateServ)">Modifier</a>
               <a class="delete-btn"  *ngIf="isLoggedIn" (click)="deleteRateService(rateServ)">Supprimer</a>

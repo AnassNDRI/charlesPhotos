@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="articles-boutons" style="padding: 8px;">
-    <button type="button" class="btn btn-primary" (click)="askAdd()" *ngIf="isLoggedIn" ><i class="fas fa-plus-circle"></i>&nbsp;Ajouter un produit</button>
+    <button type="button" class="btn btn-primary" (click)="askAdd()" *ngIf="isLoggedIn" ><i class="fas fa-plus-circle"></i>&nbsp;Ajouter une nouvelle Photo</button>
    </div>
   </div>
 
@@ -37,14 +37,12 @@
         <!--Card image  pictureBorderCard -->
         <div class="view overlay" (click)="goToPictureDetail(picture)" pictureBorderCard >
           <img class="card-img-top img-hover cardRad" [src]="picture.pictureLink" [alt]="picture.name" alt="Card image cap">
-          <a href="">
             <!-- <div class="mask rgba-white-slight">ffsfsfsfsffffffffffffff</div> -->
             <!-- Categorie texte -->
             <div class="category" [class.connected]="isLoggedIn">
               <h5 class="category-text" >{{picture.category.nameCate}}</h5>
               <!-- End texte -->
           </div>
-          </a>
         </div>
         <div class="d-flex justify-content-between">
           <a class="ad-btn" (click)="goToEditPicture(picture)" *ngIf="isLoggedIn">Modifier</a>

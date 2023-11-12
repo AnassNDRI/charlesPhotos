@@ -1,10 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
 import { Picture } from 'src/app/mockData/pictures';
 import { PicturesService } from 'src/app/service/pictures.service';
 import { CategoryService } from '../../../service/category.service';
 import { Category } from 'src/app/mockData/category';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -15,7 +16,11 @@ import { Category } from 'src/app/mockData/category';
 })
 export class PictureFormComponent implements OnInit {
 
-  @Input() picture : Picture = new Picture()
+  @ViewChild('pictureForm') pictureForm: NgForm;
+
+  @Input() picture: Picture = new Picture();
+
+
 
   pictureLinks$: Observable<string[]>;
   category$: Observable<Category[]>;
@@ -49,20 +54,34 @@ export class PictureFormComponent implements OnInit {
     this.category$ = this.categoryService.getCategoryList();
   }
 
-  onSubmit() {
-    if (this.IsAddForm) {
-      this.pictureService.addPicture(this.picture).subscribe({
-        next: (picture: Picture) => this.router.navigate(['/picture', picture.id]),
-        error: (error) => console.error('Erreur lors de l\'ajout de la photo', error)
-      });
-    } else {
-      this.pictureService.updatePicture(this.picture).subscribe({
-        next: () => this.router.navigate(['/picture', this.picture.id]),
-        error: (error) => console.error('Erreur lors de la mise à jour de la photo', error)
-      });
-    }
+  isCategoryValid() {
+    return this.picture.category && this.picture.category.id !== null; // ou une autre logique appropriée
   }
 
+  isPictureLinkValid() {
+    return this.picture.pictureLink !== ''; // Assurez-vous que pictureLink est initialisé à '' ou null
+  }
+
+
+  onSubmit() {
+    // Vérifier si le formulaire est valide
+    if (this.pictureForm.valid &&  this.isCategoryValid() && this.isPictureLinkValid() ) {
+      if (this.IsAddForm) {
+        this.pictureService.addPicture(this.picture).subscribe({
+          next: (picture: Picture) => this.router.navigate(['/picture', picture.id]),
+          error: (error) => console.error('Erreur lors de l\'ajout de la photo', error)
+        });
+      } else {
+        this.pictureService.updatePicture(this.picture).subscribe({
+          next: () => this.router.navigate(['/picture', this.picture.id]),
+          error: (error) => console.error('Erreur lors de la mise à jour de la photo', error)
+        });
+      }
+    } else {
+      // Gérer le cas où le formulaire n'est pas valide
+      alert('Le formulaire n\'est pas valide ou aucun lien d\'image sélectionné');
+    }
+  }
 
 
   goBack() {

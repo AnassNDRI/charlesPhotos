@@ -16,7 +16,7 @@ import { AdministratorComponent } from './admin/administrator/administrator.comp
 import { PictureManageComponent } from './admin/picture-manage/picture-manage.component';
 import { ServeRateManageComponent } from './admin/serve-rate-manage/serve-rate-manage.component';
 import { GalleryComponent } from './pages/gallery/gallery.component';
-import { ServiceRateModule } from './pages/serviceRate/service-rate.module';
+import { ServiceRateModule } from './pages/service-rate.module';
 import { RateServiceComponent } from './pages/rate-service/rate-service.component';
 import { BorderCardDirective } from './mockData/border-card.directive';
 

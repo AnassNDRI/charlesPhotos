@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-//import { RateServ } from '../../../mockData/rate-serv';
+
 import { ActivatedRoute, Router } from '@angular/router';
 import { RateServService } from 'src/app/service/rate-serv.service';
 import { AuthenticationService } from 'src/app/security/services/authentication.service';
-import { Rate } from 'src/app/mockData/rate';
 import { Category } from 'src/app/mockData/category';
+import { RateServ } from 'src/app/mockData/rate-serv';
 
 @Component({
   selector: 'app-service-rate-detail',
@@ -15,9 +15,9 @@ export class ServiceRateDetailComponent implements OnInit {
 
 
 
-  rateList: Rate [];
+  rateList: RateServ  [];
   categoryList: Category [];
-  rate: Rate | undefined;
+  rate: RateServ  | undefined;
   isLoggedIn: boolean = false;
 
   constructor (
@@ -41,7 +41,7 @@ export class ServiceRateDetailComponent implements OnInit {
 
   }
 
-  deleteRate(rate: Rate) {
+  deleteRate(rate: RateServ ) {
     let confirmation = confirm(`Voulez-vous vraiment supprimer la photo ${rate.title} ?`);
     if (confirmation) {
       this.rateServService.deleteRateById(rate.id)
@@ -50,7 +50,7 @@ export class ServiceRateDetailComponent implements OnInit {
   }
 
 
-  goToEditRate(rate: Rate) {
+  goToEditRate(rate: RateServ ) {
     this.route.navigate(['/edit/rateService', rate.id]);
   }
 

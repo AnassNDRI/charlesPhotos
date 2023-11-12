@@ -14,9 +14,9 @@ export class RateServ {
     rate: number = 0.0,
     description: string = 'Entrer une description...',
     pictureLink: string = "../../../assets/pictures/XXXXXXX.jpg",
-
+    id?: number,
   ) {
-    this.id = IdGenerator.generateId();
+     this.id = id ?? IdGenerator.generateId();
     this.title = title;
     this.rate = rate;
     this.description = description;

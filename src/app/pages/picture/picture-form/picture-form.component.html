@@ -7,68 +7,86 @@
           <div class="card-body">
 
               <form *ngIf="picture" (ngSubmit)="onSubmit()" #pictureForm="ngForm">
-                  <!-- Picture name Update-->
+                                  <!-- Picture name Update-->
                   <div class="input-group" *ngIf="!IsAddForm">
-                   <p class="stylPara">Modifier le nom :</p>
-                      <input class="input--style-1" type="text" placeholder="Nom de la photo" name="name" required pattern="^[a-zA-Z0-9àéèç]{1,25}$" [(ngModel)]="picture.name" #name="ngModel">
-                  </div>
-                  <!-- Picture name ADD-->
-                  <div class="input-group" *ngIf="IsAddForm">
-                    <p class="stylPara">Entrer un nom:</p>
-                       <input class="input--style-1" type="text" placeholder="Nom de la photo" name="name" required pattern="^[a-zA-Z0-9àéèç]{1,25}$" [(ngModel)]="picture.name" #name="ngModel">
-                   </div>
-
-                  <!-- Picture Link ADD-->
-                  <div class="input-group" *ngIf="IsAddForm">
-                      <div class="rs-select2 js-select-simple select--no-search">
-                        <p class="stylPara">Selectionner une image :</p>
-                          <select name="pictureLink" required [(ngModel)]="picture.pictureLink" #pictureLink="ngModel">
-                              <option disabled="disabled" selected="selected">Choisissez un lien d'image</option>
-                              <option *ngFor="let link of pictureLinks$ | async" [value]="link">{{ link }}</option>
-                          </select>
-                          <div class="select-dropdown"></div>
-                      </div>
-                  </div>
-
-
-                   <!-- Picture Categories Update -->
-                <div class="input-group" *ngIf="!IsAddForm">
-                  <div class="rs-select2 js-select-simple select--no-search">
-                    <p class="stylPara">Changer l'image :</p>
-                      <select name="pictureLink" required [(ngModel)]="picture.pictureLink" #pictureLink="ngModel">
-                          <option disabled="disabled" selected="selected">Choisissez un lien d'image</option>
-                          <option *ngFor="let link of pictureLinks$ | async" [ngValue]="link">{{ link }}</option>
-                      </select>
-                      <div class="select-dropdown"></div>
-                  </div>
-                </div>
-
-                   <!-- Picture Categories Update-->
-                <div class="input-group" *ngIf="!IsAddForm">
-                  <div class="rs-select2 js-select-simple select--no-search">
-                     <p class="stylPara">Modifier sa categorie :</p>
-                      <select name="category" required [(ngModel)]="picture.category" #category="ngModel">
-                          <option disabled="disabled" selected="selected">Catégorie</option>
-                          <option *ngFor="let categ of category$ | async" [ngValue]="categ">{{ categ.nameCate }}</option>
-                      </select>
-                      <div class="select-dropdown"></div>
-                  </div>
-                </div>
-
-                  <!-- Picture Categories ADD -->
-                  <div class="input-group" *ngIf="IsAddForm">
-                    <div class="rs-select2 js-select-simple select--no-search">
-                       <p class="stylPara">Choisir une categorie :</p>
-                        <select name="category" required [(ngModel)]="picture.category" #category="ngModel">
-                            <option disabled="disabled" selected="selected">Catégorie</option>
-                            <option *ngFor="let categ of category$ | async" [ngValue]="categ">{{ categ.nameCate }}</option>
-                        </select>
-                        <div class="select-dropdown"></div>
+                    <p class="stylPara">Modifier le nom :</p>
+                    <input class="input--style-1" type="text" placeholder="Nom de la photo" name="name" required minlength="2" [(ngModel)]="picture.name" #name="ngModel">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                      Le nom est obligatoire et doit contenir au moins 2 caractères
                     </div>
                   </div>
 
+                  <!-- Picture name ADD-->
+                  <div class="input-group" *ngIf="IsAddForm">
+                    <p class="stylPara">Entrer un nom :</p>
+                    <input class="input--style-1" type="text" placeholder="Nom de la photo" name="name" required minlength="2" [(ngModel)]="picture.name" #name="ngModel">
+                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert">
+                      Le nom est obligatoire et doit contenir au moins 2 caractères
+                    </div>
+                  </div>
+
+                 <!-- Picture Link ADD-->
+                <div class="input-group" *ngIf="IsAddForm">
+                  <div class="rs-select2 js-select-simple select--no-search">
+                    <p class="stylPara">Sélectionner une image :</p>
+                    <select name="pictureLink" required [(ngModel)]="picture.pictureLink" #pictureLink="ngModel">
+                      <option disabled="disabled" selected="selected" value="">Choisissez un lien d'image</option>
+                      <option *ngFor="let link of pictureLinks$ | async" [value]="link">{{ link }}</option>
+                    </select>
+                    <div class="select-dropdown"></div>
+                    <div *ngIf="!isPictureLinkValid()" class="alert">
+                      La sélection d'une image est obligatoire
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Picture Link Update -->
+                <div class="input-group" *ngIf="!IsAddForm">
+                  <div class="rs-select2 js-select-simple select--no-search">
+                    <p class="stylPara">Changer l'image :</p>
+                    <select name="pictureLink" required [(ngModel)]="picture.pictureLink" #pictureLink="ngModel">
+                      <option disabled="disabled" selected="selected" value="">Choisissez un lien d'image</option>
+                      <option *ngFor="let link of pictureLinks$ | async" [ngValue]="link">{{ link }}</option>
+                    </select>
+                    <div class="select-dropdown"></div>
+                    <div *ngIf="!isPictureLinkValid()" class="alert">
+                      La sélection d'une image est obligatoire
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Picture Categories Update-->
+              <div class="input-group" *ngIf="!IsAddForm">
+                <div class="rs-select2 js-select-simple select--no-search">
+                  <p class="stylPara">Modifier sa categorie :</p>
+                  <select name="category" required [(ngModel)]="picture.category" #category="ngModel">
+                    <option disabled="disabled" selected="selected" value="">Catégorie</option>
+                    <option *ngFor="let categ of category$ | async" [ngValue]="categ">{{ categ.nameCate }}</option>
+                  </select>
+                  <div class="select-dropdown"></div>
+                  <div *ngIf="!isCategoryValid()" class="alert">
+                    La sélection d'une catégorie est obligatoire
+                  </div>
+                </div>
+              </div>
+
+                <!-- Picture Categories ADD -->
+                <div class="input-group" *ngIf="IsAddForm">
+                  <div class="rs-select2 js-select-simple select--no-search">
+                    <p class="stylPara">Choisir une categorie :</p>
+                    <select name="category" required [(ngModel)]="picture.category" #category="ngModel">
+                      <option disabled="disabled" selected="selected" value="">Catégorie</option>
+                      <option *ngFor="let categ of category$ | async" [ngValue]="categ">{{ categ.nameCate }}</option>
+                    </select>
+                    <div class="select-dropdown"></div>
+                    <div *ngIf="!isCategoryValid()" class="alert">
+                      La sélection d'une catégorie est obligatoire
+                    </div>
+                  </div>
+                </div>
+
                 <div class="d-flex justify-content-between">
-                  <button class="btn btn--radius updat-btn " type="submit">{{ IsAddForm ? 'Ajouter' : 'Mettre à jour' }}</button>
+                  <button class="btn btn--radius updat-btn" type="submit" [disabled]="!pictureForm?.valid ">{{ IsAddForm ? 'Ajouter' : 'Mettre à jour' }}</button>
                   <a class="btn btn--radius back-btn" (click)="goBack()">Retour</a>
                 </div>
               </form>

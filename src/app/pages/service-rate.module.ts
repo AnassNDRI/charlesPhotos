@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { AuthGuard } from 'src/app/security/services/auth.guard';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ServiceRateEditComponent } from './service-rate-edit/service-rate-edit.component';
-import { ServiceRateDetailComponent } from './service-rate-detail/service-rate-detail.component';
-import { ServiceRateAddComponent } from './service-rate-add/service-rate-add.component';
-import { ServiceRateFormComponent } from './service-rate-form/service-rate-form.component';
+import { ServiceRateEditComponent } from './serviceRate/service-rate-edit/service-rate-edit.component';
+import { ServiceRateDetailComponent } from './serviceRate/service-rate-detail/service-rate-detail.component';
+import { ServiceRateAddComponent } from './serviceRate/service-rate-add/service-rate-add.component';
+import { ServiceRateFormComponent } from './serviceRate/service-rate-form/service-rate-form.component';
 import { RateServService } from 'src/app/service/rate-serv.service';
 
 
@@ -24,6 +24,7 @@ const rateServRoutes: Routes = [
     ServiceRateDetailComponent,
     ServiceRateFormComponent,
     ServiceRateEditComponent,
+    ServiceRateAddComponent
   ],
   imports: [
     CommonModule,
