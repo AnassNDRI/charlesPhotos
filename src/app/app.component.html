@@ -1,18 +1,18 @@
 
-
-
  <div class="header"  *ngIf="headerVisible">
   <div class="logo">
-    <a href="home"> <img src="../../../assets/pictures/logo.png" alt="Logo"></a>
+    <a routerLink="/home"> <img src="../../../assets/pictures/logo.png" alt="Logo"></a>
   </div>
-  <nav class="menu">
+  <div class="hamburger" (click)="toggleMenu()">&#9776;</div>
+  <nav class="menu" [ngClass]="{'active': menuActive}">
     <ul>
+      <li *ngIf="isLoggedIn" class="admin-link"><a routerLink="/admin">Administrateur</a></li>
       <li><a routerLink="/home">Accueil</a></li>
       <li><a routerLink="/pictures">Galerie</a></li>
       <li><a routerLink="/rateServices">Tarifs</a></li>
       <li><a routerLink="/contact">Contact</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fas fa-user"></i></a></li>
-      <li *ngIf="isLoggedIn"><a (click)="logout()"><i class="fas fa-sign-out-alt"></i></a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fas fa-user "></i></a></li>
+      <li *ngIf="isLoggedIn"><a (click)="logout()" class="text-red"><i class="fas fa-sign-out-alt text-red "></i>Deconnection</a></li>
     </ul>
   </nav>
 </div>

@@ -2,15 +2,17 @@
 <div class="container">
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4 text-center">Notre Galerie Photos </h1>
+      <h1 class="display-4 text-center" *ngIf="!isLoggedIn">Notre Galerie Photos </h1>
+      <h1 class="  text-center " *ngIf="isLoggedIn">Gérez et embellissez <br>
+        votre galerie photo avec aisance et créativité.</h1>
     </div>
   </div>
+  <div class="articles-boutons" style="padding: 8px;">
+    <button type="button" class="btn btn-primary" (click)="askAdd()" *ngIf="isLoggedIn" ><i class="fas fa-plus-circle"></i>&nbsp;Ajouter une nouvelle Photo</button>
+   </div>
   </div>
 
-  <div class="articles-boutons">
-    <!-- <button type="button" class="btn btn-primary" (click)="askAdd()" *ngIf="editionMode" ><i class="fas fa-plus-circle"></i>&nbsp;Ajouter un produit</button>
-    <button type="button" class="btn btn-outline-secondary" (click)="askBack()" *ngIf="editionMode"><i class="fas fa-chevron-left"></i>&nbsp;Retour</button> -->
-  </div>
+
 
   <thead>
   <ul id="menu-accordeon">
@@ -29,20 +31,23 @@
 <div class="container card-container">
   <!-- Première rangée de cartes -->
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-6" *ngFor="let picture of filteredPictures">
+    <div class="col-xs-12 col-sm-6 col-md-6" *ngFor="let picture of filteredPictures" >
       <!-- Card -->
       <div class="card mb-4 disign">
-        <!--Card image -->
+        <!--Card image  pictureBorderCard -->
         <div class="view overlay" (click)="goToPictureDetail(picture)" pictureBorderCard >
           <img class="card-img-top img-hover cardRad" [src]="picture.pictureLink" [alt]="picture.name" alt="Card image cap">
-          <a href="">
             <!-- <div class="mask rgba-white-slight">ffsfsfsfsffffffffffffff</div> -->
             <!-- Categorie texte -->
-            <div class="category">
-              <h5 class="category-text" *ngFor="let categ of picture.category">{{categ.nameCate}}</h5>
+            <div class="category" [class.connected]="isLoggedIn">
+              <h5 class="category-text" >{{picture.category.nameCate}}</h5>
               <!-- End texte -->
           </div>
-          </a>
+        </div>
+        <div class="d-flex justify-content-between">
+          <a class="ad-btn" (click)="goToEditPicture(picture)" *ngIf="isLoggedIn">Modifier</a>
+          <a class="delete-btn" (click)="deletePicture(picture)" *ngIf="isLoggedIn">Supprimer</a>
         </div>
       </div>
+
     </div>

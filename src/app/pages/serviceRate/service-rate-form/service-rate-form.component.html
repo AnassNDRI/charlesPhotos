@@ -1,0 +1,110 @@
+<div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+  <div class="wrapper wrapper--w680">
+      <div class="card card-1">
+        <div class="card-heading">
+          <img *ngIf="rateServ?.pictureLink" [src]="rateServ.pictureLink" class="card-img">
+        </div>
+          <div class="card-body">
+
+              <form *ngIf="rateServ" (ngSubmit)="onSubmit()" #pictureForm="ngForm">
+                  <!-- Picture title Update-->
+                <div class="input-group" *ngIf="!IsAddForm">
+                  <p class="stylPara">Modifier le titre :</p>
+                  <input class="input--style-1" type="text" placeholder="Titre de la photo" name="title" required minlength="2" [(ngModel)]="rateServ.title" #title="ngModel">
+                  <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+                    Le titre est obligatoire et doit contenir au moins 2 caractères
+                  </div>
+                </div>
+
+                <!-- Picture title ADD-->
+                <div class="input-group" *ngIf="IsAddForm">
+                  <p class="stylPara">Entrer un titre :</p>
+                  <input class="input--style-1" type="text" placeholder="Titre de la photo" name="title" required minlength="2" [(ngModel)]="rateServ.title" #title="ngModel">
+                  <div *ngIf="title.invalid && (title.dirty || title.touched)" class="alert">
+                    Le titre est obligatoire et doit contenir au moins 2 caractères
+                  </div>
+                </div>
+
+                  <!-- Picture Rate Update-->
+                  <div class="input-group" *ngIf="!IsAddForm">
+                    <p class="stylPara">Modifier le prix :</p>
+                    <input class="input--style-1" type="text" placeholder="Prix de la photo" name="rate" required pattern="^\d+(\.\d{1,2})?$" [(ngModel)]="rateServ.rate" #rate="ngModel">
+                    <div *ngIf="rate.invalid && (rate.dirty || rate.touched)" class="alert">
+                      Le prix doit être un nombre valide (ex: 10, 10.50)
+                    </div>
+                  </div>
+
+                <!-- Picture Rate ADD-->
+                <div class="input-group" *ngIf="IsAddForm">
+                  <p class="stylPara">Entrer un prix :</p>
+                  <input class="input--style-1" type="text" placeholder="Prix de la photo" name="rate" required pattern="^\d+(\.\d{1,2})?$" [(ngModel)]="rateServ.rate" #rate="ngModel">
+                  <div *ngIf="rate.invalid && (rate.dirty || rate.touched)" class="alert">
+                    Le prix doit être un nombre valide (ex: 10, 10.50)
+                  </div>
+                </div>
+
+
+                  <!-- Picture description Update-->
+                <div class="input-group" *ngIf="!IsAddForm">
+                  <p class="stylPara">Modifier la description :</p>
+                  <input class="input--style-1" type="text" placeholder="La description de la photo" name="description" required minlength="10" [(ngModel)]="rateServ.description" #description="ngModel">
+                  <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
+                    La description est obligatoire et doit contenir au moins 10 caractères
+                  </div>
+                </div>
+
+                <!-- Picture description ADD-->
+                <div class="input-group" *ngIf="IsAddForm">
+                  <p class="stylPara">Entrer une description :</p>
+                  <input class="input--style-1" type="text" placeholder="Description de la photo" name="description" required minlength="10" [(ngModel)]="rateServ.description" #description="ngModel">
+                  <div *ngIf="description.invalid && (description.dirty || description.touched)" class="alert">
+                    La description est obligatoire et doit contenir au moins 10 caractères
+                  </div>
+                </div>
+
+                  <!-- Picture Link ADD-->
+            <div class="input-group" *ngIf="IsAddForm">
+              <div class="rs-select2 js-select-simple select--no-search">
+                <p class="stylPara">Sélectionner une image :</p>
+                <select name="pictureLink" required [(ngModel)]="rateServ.pictureLink" #pictureLink="ngModel">
+                  <option disabled="disabled" selected="selected" value="">Choisissez un lien d'image</option>
+                  <option *ngFor="let link of pictureLinks$ | async" [value]="link">{{ link }}</option>
+                </select>
+                <div class="select-dropdown"></div>
+                <div *ngIf="pictureLink.invalid && (pictureLink.dirty || pictureLink.touched)" class="alert">
+                  La sélection d'une image est obligatoire
+                </div>
+              </div>
+            </div>
+
+            <!-- Picture Categories Update -->
+            <div class="input-group" *ngIf="!IsAddForm">
+              <div class="rs-select2 js-select-simple select--no-search">
+                <p class="stylPara">Changer l'image :</p>
+                <select name="pictureLink" required [(ngModel)]="rateServ.pictureLink" #pictureLink="ngModel">
+                  <option disabled="disabled" selected="selected" value="">Choisissez un lien d'image</option>
+                  <option *ngFor="let link of pictureLinks$ | async" [ngValue]="link">{{ link }}</option>
+                </select>
+                <div class="select-dropdown"></div>
+                <div *ngIf="pictureLink.invalid && (pictureLink.dirty || pictureLink.touched)" class="alert">
+                  La sélection d'une image est obligatoire
+                </div>
+              </div>
+            </div>
+
+
+
+                <div class="d-flex justify-content-between">
+                  <button class="btn btn--radius updat-btn" type="submit" [disabled]="!pictureForm?.valid">{{ IsAddForm ? 'Ajouter' : 'Mettre à jour' }}</button>
+
+                  <a class="btn btn--radius back-btn" (click)="goBack()">Retour</a>
+                </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- <h3 *ngIf="!rateServ" class="center">
+  <app-loader></app-loader>
+</h3> -->

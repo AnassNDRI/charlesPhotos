@@ -5,7 +5,7 @@ import { PicturesService } from 'src/app/service/pictures.service';
 
 @Component({
   selector: 'app-edit-picture',
-  template: `<app-picture-form *ngIf="picture" [picture]="picture"></app-picture-form>`
+  template: `<app-picture-form ></app-picture-form>`
 })
 export class EditPictureComponent implements OnInit {
 

@@ -1,7 +1,7 @@
 import { IdGenerator } from "./id-generator.service";
 
 export class Category {
-  id: number;
+  readonly id: number;
   nameCate: string;
 
   constructor(nameCate: string) {

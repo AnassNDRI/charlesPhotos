@@ -1,11 +1,4 @@
 
-<div class="container">
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-4 text-center">Plus de Detail </h1>
-      </div>
-    </div>
-  </div>
 
   <div class="container">
     <div class="row" id="ads" *ngIf="picture">
@@ -13,12 +6,12 @@
       <div class="col-md-4 carte-centree">
         <div class="card rounded">
           <div class="card-image">
-            <span class="card-notify-badge" *ngFor="let categ of picture.category">{{categ.nameCate}}</span>
+            <span class="card-notify-badge" >{{picture.category.nameCate}}</span>
             <img class="img-fluid" [src]="picture.pictureLink" />
           </div>
           <div class="card-body text-center">
             <div class="ad-title m-auto">
-              <p>Honda Accord LX</p>
+              <p>{{picture.description}}</p>
             </div>
             <div class="d-flex justify-content-between">
               <a class="ad-btn" (click)="goToEditPicture(picture)" *ngIf="isLoggedIn">Modifier</a>

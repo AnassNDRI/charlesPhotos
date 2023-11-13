@@ -2,29 +2,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Picture } from '../mockData/pictures';
 import { Observable, catchError, map, of, tap } from 'rxjs';
-import { Category } from '../mockData/category';
+import { PICTURES } from '../mockData/mock-pictures-list';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class PicturesService {
-  categoryIdSelected: any;
-  filtre: any;
+  private picturesUrl = 'api/pictures'; // URL de l'API
 
   constructor(private http: HttpClient) { }
 
   addPicture(picture: Picture): Observable<Picture> {
-  const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
-
-  return this.http.post<Picture>('pictures', picture, httpOptions).pipe(
-    tap((response) => this.log(response)),
-    catchError((error) => this.handleError(error, null))
-  );
-
-}
-
+    const newPicture = new Picture(picture.name, picture.pictureLink, picture.description, picture.category);
+    PICTURES.push(newPicture);
+    return of(newPicture);
+  }
 
 
 
@@ -35,6 +28,7 @@ getPictureList() : Observable< Picture[]> {
     catchError((error) => this.handleError(error, []))
   );
 }
+
 
 getPictureById(pictureId: number) : Observable<Picture|undefined> {
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from 'src/app/security/services/auth.service';
 import { AuthenticationService } from 'src/app/security/services/authentication.service';
 
 
@@ -10,38 +9,44 @@ import { AuthenticationService } from 'src/app/security/services/authentication.
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent  {
-  message = 'Vous etes déconnectés (Charles/photo)';
+  message = 'Vous êtes actuellement déconnecté';
   email = '';
   password = '';
 
   constructor(private authService: AuthenticationService, private router: Router) {}
 
-  ngOnInit() {}
-
-  setMessage(isLoggedIn: boolean) {
-    this.message = isLoggedIn ? 'Vous etes connectés' : 'Identifiant ou mot de passe incorrect.';
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.message = 'Vous êtes actuellement connecté';
+    }
   }
 
   Adminlogin() {
     this.message = 'Tentative de connexion en cours...';
-    this.authService.login(this.email, this.password).subscribe((isLoggedIn: boolean) => {
-      this.setMessage(isLoggedIn);
-      if (isLoggedIn) {
-        this.router.navigate(['/admin']);
-      } else {
-        this.password = '';
-        this.router.navigate(['/login']);
+    this.authService.login(this.email, this.password).subscribe({
+      next: (isLoggedIn) => {
+        if (isLoggedIn) {
+          this.message = 'Vous êtes connecté';
+          this.router.navigate(['/admin']);
+        } else {
+          this.message = 'Échec de la connexion';
+          this.password = '';
+        }
+      },
+      error: (err) => {
+        this.message = 'Une erreur s’est produite lors de la connexion';
+        console.error(err);
       }
     });
   }
 
   logout() {
     this.authService.logout();
-    this.message = 'Vous êtes déconnetés';
+    this.message = 'Vous êtes déconnecté';
+    this.router.navigate(['/login']);
   }
 
   goBack() {
     this.router.navigate(['/pictures']);
   }
-
 }

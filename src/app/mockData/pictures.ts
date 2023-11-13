@@ -2,24 +2,24 @@ import { Category } from "./category";
 import { IdGenerator } from "./id-generator.service";
 
 export class Picture {
-
-  id: number;
+  readonly id: number;
   name: string;
   pictureLink: string;
-  category: Category[];
-
+  description: string;
+  category: Category;
 
   constructor(
 
-    name: string = 'Entrer un nom...',
-    pictureLink: string = "../../../assets/pictures/XXXXXXX.jpg",
-    category: Category[] = [new Category('Couple')],
-
+    name: string = '',
+    pictureLink: string = '',
+    description: string = '',
+    category: Category = new Category(''),
+     id?: number,
   ) {
-    this.id = IdGenerator.generateId();
+   this.id = id ?? IdGenerator.generateId();
     this.name = name;
     this.pictureLink = pictureLink;
+    this.description = description;
     this.category = category;
   }
-
 }
