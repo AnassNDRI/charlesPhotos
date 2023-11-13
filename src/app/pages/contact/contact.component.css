@@ -5,37 +5,29 @@ body, html {
   font-family: Arial, sans-serif;
 }
 
-/* .background {
-  background-color: dimgrey;
-} */
-
 .container {
   display: flex;
   padding: 80px;
   justify-content: center;
   align-items: center;
   height: 100%;
-  flex-direction: column; /* Ajout de cette ligne pour disposer les éléments de haut en bas */
+  flex-direction: column;
 }
-
 .form-container {
   background-color:  dimgrey;
   padding: 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
-  flex-grow: 1; /* Ajout de cette ligne pour que le formulaire s'étende sur toute la hauteur disponible */
+  flex-grow: 1;
 }
-
 .form-heading {
   font-weight: bold;
   margin-bottom: 20px;
 }
-
 .form-group {
   margin-bottom: 20px;
 }
-
 .form-control {
   width: 100%;
   padding: 10px;
@@ -43,7 +35,6 @@ body, html {
   border-radius: 5px;
   font-size: 16px;
 }
-
 .btn-primary {
   background-color: #007bff;
   color: #fff;
@@ -53,7 +44,6 @@ body, html {
   border-radius: 5px;
   cursor: pointer;
 }
-
 .btn-primary:hover {
   background-color: #0056b3;
 }
