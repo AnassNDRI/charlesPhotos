@@ -54,18 +54,25 @@ export class PictureFormComponent implements OnInit {
     this.category$ = this.categoryService.getCategoryList();
   }
 
-  isCategoryValid() {
-    return this.picture.category && this.picture.category.id !== null; // ou une autre logique appropriée
+  isCategoryValid(): boolean {
+    return !!(this.picture.category && this.picture.category.nameCate !== '');
   }
 
-  isPictureLinkValid() {
-    return this.picture.pictureLink !== ''; // Assurez-vous que pictureLink est initialisé à '' ou null
+  isPictureLinkValid(): boolean {
+    return !!this.picture.pictureLink;
   }
 
+  // isPictureLinkValid() {
+  //   return this.picture.pictureLink !== ''; // Assurez-vous que pictureLink est initialisé à '' ou null
+  // }
+
+  isFormValid(): boolean {
+    return !!this.pictureForm?.valid && this.isCategoryValid() && this.isPictureLinkValid();
+  }
 
   onSubmit() {
     // Vérifier si le formulaire est valide
-    if (this.pictureForm.valid &&  this.isCategoryValid() && this.isPictureLinkValid() ) {
+    if (this.isFormValid() ) {
       if (this.IsAddForm) {
         this.pictureService.addPicture(this.picture).subscribe({
           next: (picture: Picture) => this.router.navigate(['/picture', picture.id]),
@@ -79,7 +86,7 @@ export class PictureFormComponent implements OnInit {
       }
     } else {
       // Gérer le cas où le formulaire n'est pas valide
-      alert('Le formulaire n\'est pas valide ou aucun lien d\'image sélectionné');
+      alert('Le formulaire n\'est pas valide ou aucune categorie n\'est selectionnée');
     }
   }
 

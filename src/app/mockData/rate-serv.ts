@@ -10,10 +10,10 @@ export class RateServ {
   pictureLink: string ;
 
   constructor(
-    title: string = 'Entrer un Titre...',
-    rate: number = 0.0,
-    description: string = 'Entrer une description...',
-    pictureLink: string = "../../../assets/pictures/XXXXXXX.jpg",
+    title: string = '',
+    rate: number = 0 ,
+    description: string = '',
+    pictureLink: string = '',
     id?: number,
   ) {
      this.id = id ?? IdGenerator.generateId();

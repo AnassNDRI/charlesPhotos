@@ -14,7 +14,7 @@ export class PicturesService {
   constructor(private http: HttpClient) { }
 
   addPicture(picture: Picture): Observable<Picture> {
-    const newPicture = new Picture(picture.name, picture.pictureLink, picture.category);
+    const newPicture = new Picture(picture.name, picture.pictureLink, picture.description, picture.category);
     PICTURES.push(newPicture);
     return of(newPicture);
   }
