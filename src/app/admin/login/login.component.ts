@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/security/services/authentication.service';
@@ -8,7 +9,7 @@ import { AuthenticationService } from 'src/app/security/services/authentication.
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent {
   message = 'Vous êtes actuellement déconnecté';
   email = '';
   password = '';
