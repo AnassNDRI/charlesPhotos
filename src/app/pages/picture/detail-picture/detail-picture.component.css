@@ -11,6 +11,7 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  flex-wrap: wrap; /* Allows content to wrap on smaller screens */
 }
 
 #ads .card-notify-badge {
@@ -39,11 +40,8 @@ body {
   padding: 15px 0 0 0;
 }
 
-
-
 .carte-centree {
   margin: 0 auto;
-  transform: scale(1.75);
   transition: transform 0.3s ease-in-out;
 }
 
@@ -57,96 +55,67 @@ body {
   box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3);
 }
 
-#ads .card-image-overlay {
-  font-size: 20px;
+#ads .card-image img {
+  max-width: 100%;
+  height: auto;
 }
 
-#ads .card-image-overlay span {
-  display: inline-block;
+#ads .ad-btn, #ads .back-btn, #ads .delete-btn {
+  text-transform: uppercase;
+  width: 70px;
+  height: 20px;
+  border-radius: 80px;
+  font-size: 8px;
+  line-height: 12px;
+  text-align: center;
+  border: 3px solid;
+  display: block;
+  text-decoration: none;
+  margin: 20px auto 1px auto;
+  color: #000;
+  overflow: hidden;
+  position: relative;
 }
-
-
-
 
 #ads .ad-btn {
-  text-transform: uppercase;
-  width: 70px;
-  height: 20px;
-  border-radius: 80px;
-  font-size: 8px;
-  line-height: 12px;
-  text-align: center;
-  border: 3px solid #e6de08;
-  display: block;
-  text-decoration: none;
-  margin: 20px auto 1px auto;
-  color: #000;
-  overflow: hidden;
-  position: relative;
+  border-color: #e6de08;
   background-color: #e6de08;
 }
-
-#ads .ad-btn:hover {
-  background-color: #e6de08;
-  color: #1e1717;
-  border: 2px solid #e6de08;
-  background: transparent;
-  transition: all 0.3s ease;
-  box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-}
-
 
 #ads .back-btn {
-  text-transform: uppercase;
-  width: 70px;
-  height: 20px;
-  border-radius: 80px;
-  font-size: 8px;
-  line-height: 12px;
-  text-align: center;
-  border: 3px solid grey;
-  display: block;
-  text-decoration: none;
-  margin: 20px auto 1px auto;
-  color: #000;
-  overflow: hidden;
-  position: relative;
+  border-color: grey;
   background-color: grey;
 }
-
-#ads .back-btn:hover {
-  background-color: grey;
-  color: #1e1717;
-  border: 2px solid grey;
-  background: transparent;
-  transition: all 0.3s ease;
-  box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
-}
-
 
 #ads .delete-btn {
-  text-transform: uppercase;
-  width: 70px;
-  height: 20px;
-  border-radius: 80px;
-  font-size: 8px;
-  line-height: 12px;
-  text-align: center;
-  border: 3px solid  rgb(230, 4, 4);
-  display: block;
-  text-decoration: none;
-  margin: 20px auto 1px auto;
-  color: #000;
-  overflow: hidden;
-  position: relative;
-  background-color:   rgb(230, 4, 4);
+  border-color: rgb(230, 4, 4);
+  background-color: rgb(230, 4, 4);
 }
 
-#ads .delete-btn:hover {
-  background-color:  rgb(230, 4, 4);
+#ads .ad-btn:hover, #ads .back-btn:hover, #ads .delete-btn:hover {
   color: #1e1717;
-  border: 2px solid  rgb(230, 4, 4);
   background: transparent;
   transition: all 0.3s ease;
   box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  #ads {
+    height: auto; /* Adjust height for smaller screens */
+  }
+
+  .carte-centree {
+    transform: scale(1); /* No scale for smaller screens */
+  }
+
+  #ads .ad-btn, #ads .back-btn, #ads .delete-btn {
+    font-size: 12px; /* Increase font size for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .carte-centree {
+    padding: 10px; /* Reduce padding for very small screens */
+  }
 }
