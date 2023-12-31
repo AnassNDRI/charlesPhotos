@@ -12,7 +12,7 @@
     <!--  <li><a routerLink="/rateServices">Tarifs</a></li>
      --> 
       <li><a routerLink="/contact">Contact</a></li>
-      <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fas fa-user "></i></a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="/login"><i class="fas fa-user"></i></a></li>
       <li *ngIf="isLoggedIn"><a (click)="logout()" class="text-red"><i class="fas fa-sign-out-alt text-red "></i>Deconnection</a></li>
     </ul>
   </nav>

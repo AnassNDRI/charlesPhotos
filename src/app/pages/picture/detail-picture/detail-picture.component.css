@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#ads {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto; /* Ajusté pour une meilleure flexibilité */
+  margin: 0;
+  padding: 20px; /* Espace ajouté pour l'espacement */
+  flex-direction: column; /* Empiler les éléments verticalement sur les petits écrans */
+}
+
+.carte-centree {
+  width: 100%; /* Pleine largeur pour éviter le débordement */
+  max-width: 300px; /* Limiter la largeur maximale */
+  margin: 15px auto; /* Espacer les cartes */
+  transition: transform 0.3s ease-in-out;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-image img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card-notify-badge {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #171630;
+  color: whitesmoke;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 0 0 10px 0;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+
+@media (max-width: 768px) {
+  .card-notify-badge, .card-notify-year {
+    font-size: 12px;
+  }
+
+  .ad-btn, .back-btn, .delete-btn {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carte-centree {
+    max-width: 100%;
+  }
+
+  .card-notify-badge, .card-notify-year {
+    font-size: 10px;
+  }
+}
+
+
+#ads .ad-btn {
+  text-transform: uppercase;
+  width: 70px;
+  height: 20px;
+  border-radius: 80px;
+  font-size: 8px;
+  line-height: 12px;
+  text-align: center;
+  border: 3px solid #e6de08;
+  display: block;
+  text-decoration: none;
+  margin: 20px auto 1px auto;
+  color: #000;
+  overflow: hidden;
+  position: relative;
+  background-color: #e6de08;
+}
+
+#ads .ad-btn:hover {
+  background-color: #e6de08;
+  color: #1e1717;
+  border: 2px solid #e6de08;
+  background: transparent;
+  transition: all 0.3s ease;
+  box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+}
+
+
+#ads .back-btn {
+  text-transform: uppercase;
+  width: 70px;
+  height: 20px;
+  border-radius: 80px;
+  font-size: 8px;
+  line-height: 12px;
+  text-align: center;
+  border: 3px solid grey;
+  display: block;
+  text-decoration: none;
+  margin: 20px auto 1px auto;
+  color: #000;
+  overflow: hidden;
+  position: relative;
+  background-color: grey;
+}
+
+#ads .back-btn:hover {
+  background-color: grey;
+  color: #1e1717;
+  border: 2px solid grey;
+  background: transparent;
+  transition: all 0.3s ease;
+  box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+}
+
+
+#ads .delete-btn {
+  text-transform: uppercase;
+  width: 70px;
+  height: 20px;
+  border-radius: 80px;
+  font-size: 8px;
+  line-height: 12px;
+  text-align: center;
+  border: 3px solid  rgb(230, 4, 4);
+  display: block;
+  text-decoration: none;
+  margin: 20px auto 1px auto;
+  color: #000;
+  overflow: hidden;
+  position: relative;
+  background-color:   rgb(230, 4, 4);
+}
+
+#ads .delete-btn:hover {
+  background-color:  rgb(230, 4, 4);
+  color: #1e1717;
+  border: 2px solid  rgb(230, 4, 4);
+  background: transparent;
+  transition: all 0.3s ease;
+  box-shadow: 12px 15px 20px 0px rgba(46,61,73,0.15);
+}
