@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <div class="logo">
+        <img src="../../../assets/pictures/logo.png" alt="">
+    </div>
+    <div class="text-center mt-4 name">
+        Connexion Admin
+    </div>
+  
+    <!-- Section pour afficher les messages -->
+    <div *ngIf="message" style="color: rgb(235, 89, 89); font-weight: bold;" class="text-center mt-2 alert">
+      {{ message }}
+    </div>
+  
+    <form class="p-3 mt-3">
+        <div class="form-field d-flex align-items-center">
+            <span class="far fa-user"></span>
+            <input [(ngModel)]="email" type="text" name="email" id="email" placeholder="Email">
+        </div>
+        <div class="form-field d-flex align-items-center">
+            <span class="fas fa-key"></span>
+            <input [(ngModel)]="password" type="password" name="password" id="pwd" placeholder="Password">
+        </div>
+        <button class="btn mt-3" (click)="login()">Login</button>
+    </form>
+  
+    <div class="text-center fs-6">
+      Si vous n'avez pas de compte, connectez-vous <a routerLink="/signup">ici</a>.
+    </div>
+    <div class="text-center fs-6">
+        <a routerLink="/home">Retourner</a>
+    </div>
+  </div>
+  

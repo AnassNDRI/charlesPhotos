@@ -4,3 +4,6 @@
   background-color: rgb(39, 36, 36);
   color: white; /* Change la couleur du texte en blanc pour qu'il soit lisible sur fond noir */
 /*} */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "charlesPhotos": {
+    "trtConseil": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -25,7 +25,7 @@
               "src/assets"
             ],
             "styles": [
-
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/bootstrap/dist/css/bootstrap.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/animate.css/animate.css",
@@ -69,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "charlesPhotos:build:production"
+              "browserTarget": "trtConseil:build:production"
             },
             "development": {
-              "browserTarget": "charlesPhotos:build:development"
+              "browserTarget": "trtConseil:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "charlesPhotos:build"
+            "browserTarget": "trtConseil:build"
           }
         },
         "test": {
@@ -96,6 +96,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -103,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "e4ddca49-282a-452a-a712-1e36f56e550a"
   }
 }

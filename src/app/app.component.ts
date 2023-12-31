@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthenticationService } from './security/services/authentication.service';
 import { Router } from '@angular/router';
-import { LayoutService } from './security/services/layout.service';
+
 
 import { Subscription } from 'rxjs';
+import { AuthenticationService } from './security/service/authentication.service';
+import { LayoutService } from './security/service/layout.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,7 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
-  title = 'charlesPhotos';
+  title = 'trtConseil';
   menuActive: boolean = false;
   headerVisible: boolean  = true;
   headerVisibleSubscription: Subscription;
@@ -25,7 +26,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private layoutService: LayoutService,
     private cdr: ChangeDetectorRef,
     private router: Router
-  ) {
+  ) { 
     // À chaque démarrage de l'application, on vérifie si l'utilisateur est déjà connecté
     const currentUserString = sessionStorage.getItem('currentUser');
     if (currentUserString) {
@@ -36,7 +37,7 @@ export class AppComponent implements OnInit, OnDestroy {
           error => this.isLoggedIn = false
         );
       }
-    }
+    } 
   }
 
   ngOnInit() {
@@ -49,7 +50,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.userSubscription = this.authService.currentUser$.subscribe(user => {
       this.isLoggedIn = !!user;
     });
-
 
   }
 
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
 
   }
   }
